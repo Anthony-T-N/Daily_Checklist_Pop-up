@@ -10,11 +10,11 @@ Brief: Application that allows users to tick off daily activities once completed
 === Basic Visual Design === 
 
 ==================================
-| Daily Notification			       |
-|							                   |
-| + [X] Exercise			           |
-| + [ ] Drink Coffee		         |
-| + [X] Clean Room				       |
-| + [ ] Tinker Device			       |
-|								                 |
+| Daily Notification			 |
+|							     |
+| + [X] Exercise			     |
+| + [ ] Drink Coffee		     |
+| + [X] Clean Room				 |
+| + [ ] Tinker Device			 |
+|								 |
 ==================================
