@@ -1,0 +1,15 @@
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\bin\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.exe
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\bin\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.deps.json
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\bin\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.runtimeconfig.json
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\bin\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.runtimeconfig.dev.json
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\bin\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.dll
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\bin\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.pdb
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.csprojAssemblyReference.cache
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop_up.Form1.resources
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.csproj.GenerateResource.cache
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.AssemblyInfoInputs.cache
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.AssemblyInfo.cs
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.csproj.CoreCompileInputs.cache
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.dll
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.pdb
+C:\Users\Anthony\source\repos\Daily_Checklist_Pop-up\obj\Debug\netcoreapp3.1\Daily_Checklist_Pop-up.genruntimeconfig.cache
