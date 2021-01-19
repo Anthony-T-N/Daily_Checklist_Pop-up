@@ -29,12 +29,15 @@ namespace Daily_Checklist_Pop_up
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.day_countdown_timer = new System.Windows.Forms.Timer(this.components);
+            this.day_countdown_timer_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkBox4
@@ -43,9 +46,9 @@ namespace Daily_Checklist_Pop_up
             this.checkBox4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.checkBox4.Location = new System.Drawing.Point(180, 74);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(83, 19);
+            this.checkBox4.Size = new System.Drawing.Size(71, 19);
             this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "checkBox4";
+            this.checkBox4.Text = "Example";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox3
@@ -103,12 +106,24 @@ namespace Daily_Checklist_Pop_up
             this.checkBox6.Text = "Github";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
+            // day_countdown_timer_label
+            // 
+            this.day_countdown_timer_label.AutoSize = true;
+            this.day_countdown_timer_label.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.day_countdown_timer_label.ForeColor = System.Drawing.Color.White;
+            this.day_countdown_timer_label.Location = new System.Drawing.Point(135, 97);
+            this.day_countdown_timer_label.Name = "day_countdown_timer_label";
+            this.day_countdown_timer_label.Size = new System.Drawing.Size(37, 15);
+            this.day_countdown_timer_label.TabIndex = 6;
+            this.day_countdown_timer_label.Text = "Timer";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(313, 121);
+            this.Controls.Add(this.day_countdown_timer_label);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
@@ -131,6 +146,8 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.Timer day_countdown_timer;
+        private System.Windows.Forms.Label day_countdown_timer_label;
     }
 }
 

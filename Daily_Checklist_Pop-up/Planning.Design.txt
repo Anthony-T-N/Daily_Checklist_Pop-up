@@ -6,6 +6,7 @@ Brief: Application that allows users to tick off daily activities once completed
 - Stored and opened from the taskbar tray.
 - Regularly show notifications of activities left to do.
 - Interactive checkboxes next to activities.
+- Show a countdown of time left to complete tasks.
 
 === Basic Visual Design === 
 
