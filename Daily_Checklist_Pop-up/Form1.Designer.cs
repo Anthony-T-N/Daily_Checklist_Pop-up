@@ -38,6 +38,7 @@ namespace Daily_Checklist_Pop_up
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.day_countdown_timer = new System.Windows.Forms.Timer(this.components);
             this.day_countdown_timer_label = new System.Windows.Forms.Label();
+            this.countdown_progress_bar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // checkBox4
@@ -117,12 +118,20 @@ namespace Daily_Checklist_Pop_up
             this.day_countdown_timer_label.TabIndex = 6;
             this.day_countdown_timer_label.Text = "Timer";
             // 
+            // countdown_progress_bar
+            // 
+            this.countdown_progress_bar.Location = new System.Drawing.Point(201, 97);
+            this.countdown_progress_bar.Name = "countdown_progress_bar";
+            this.countdown_progress_bar.Size = new System.Drawing.Size(100, 23);
+            this.countdown_progress_bar.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(313, 121);
+            this.Controls.Add(this.countdown_progress_bar);
             this.Controls.Add(this.day_countdown_timer_label);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
@@ -148,6 +157,7 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Timer day_countdown_timer;
         private System.Windows.Forms.Label day_countdown_timer_label;
+        private System.Windows.Forms.ProgressBar countdown_progress_bar;
     }
 }
 

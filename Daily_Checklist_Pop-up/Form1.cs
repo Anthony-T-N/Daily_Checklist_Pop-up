@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +13,11 @@ namespace Daily_Checklist_Pop_up
 {
     public partial class Form1 : Form
     {
-        private int _ticks = 1000;
+        private double _ticks;
 
         public Form1()
         {
+            _ticks = countdown_calculations();
             InitializeComponent();
             day_countdown_timer.Tick += day_countdown_timer_Tick;
             day_countdown_timer.Interval = 1000;
@@ -28,20 +29,28 @@ namespace Daily_Checklist_Pop_up
         {
             _ticks--;
             this.day_countdown_timer_label.Text = _ticks.ToString();
-            if (_ticks == 5)
+            if (_ticks <= 5)
             {
                 this.day_countdown_timer_label.Text = "DONE";
                 day_countdown_timer.Stop();
             }
         }
-        private void countdown_calculations()
+        private double countdown_calculations()
         {
             // Determine time left in current local day and apply countdown on window countdown label.
+
+            DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1);
             DateTime start_of_day = new DateTime();
-            var remaining = TimeSpan.FromHours(24) - start_of_day.TimeOfDay;
-            Debug.WriteLine(remaining);
-            DateTime startDate = DateTime.ParseExact(DateTime.Date, "yyyyMMdd");
-            Debug.WriteLine(startDate);
+            /*
+            TimeSpan current_time = new TimeSpan();
+            current_time = DateTime.Now.TimeOfDay;
+            */
+            Debug.WriteLine(end_of_day.TimeOfDay.TotalHours);
+            Debug.WriteLine(DateTime.Now.TimeOfDay.TotalHours);
+            var remaining_time = end_of_day.TimeOfDay.TotalHours - DateTime.Now.TimeOfDay.TotalHours;
+            Debug.WriteLine(remaining_time.ToString("HH:mm:ss tt"));
+            Debug.WriteLine(string.Format("{0:HH:mm:ss tt}", remaining_time));
+            return remaining_time;
         }
     }
 }
