@@ -38,6 +38,8 @@ namespace Daily_Checklist_Pop_up
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.day_countdown_timer = new System.Windows.Forms.Timer(this.components);
             this.day_countdown_timer_label = new System.Windows.Forms.Label();
+            this.time_test_button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkBox4
@@ -117,12 +119,32 @@ namespace Daily_Checklist_Pop_up
             this.day_countdown_timer_label.TabIndex = 6;
             this.day_countdown_timer_label.Text = "Timer";
             // 
+            // time_test_button
+            // 
+            this.time_test_button.Location = new System.Drawing.Point(226, 93);
+            this.time_test_button.Name = "time_test_button";
+            this.time_test_button.Size = new System.Drawing.Size(75, 23);
+            this.time_test_button.TabIndex = 7;
+            this.time_test_button.Text = "button1";
+            this.time_test_button.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1, 97);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(313, 121);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.time_test_button);
             this.Controls.Add(this.day_countdown_timer_label);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
@@ -149,6 +171,8 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.Timer day_countdown_timer;
         private System.Windows.Forms.Label day_countdown_timer_label;
         private System.Windows.Forms.ProgressBar countdown_progress_bar;
+        private System.Windows.Forms.Button time_test_button;
+        private System.Windows.Forms.Button button1;
     }
 }
 
