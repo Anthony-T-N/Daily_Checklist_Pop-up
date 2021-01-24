@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,25 +14,45 @@ namespace Daily_Checklist_Pop_up
     public partial class Form1 : Form
     {
         private TimeSpan _ticks;
-        private readonly TimeSpan _oneSecond;
+        private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
 
         public Form1()
         {
             _ticks = countdown_calculations();
             InitializeComponent();
-            _oneSecond = new TimeSpan(0, 0, 0, 1);
             day_countdown_timer.Tick += day_countdown_timer_Tick;
             day_countdown_timer.Interval = 1000;
             day_countdown_timer.Start();
+            time_test_button.Click += new EventHandler(time_test_button_Click);
+            if (time_test_button_clicked == true)
+            {
+                Debug.WriteLine("HELLO");
+                time_test_button_clicked = false;
+            }
+            Debug.WriteLine("End here");
+            if (button1_clicked == true)
+            {
+                Debug.WriteLine("HELLO");
+                button1_clicked = false;
+            }
         }
-
         private void day_countdown_timer_Tick(object sender, EventArgs e)
         {
             _ticks = _ticks.Subtract(_oneSecond);
-            Debug.WriteLine(_ticks.ToString());
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
-            // this.day_countdown_timer_label.Text = _ticks.ToString();
-            this.day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
+            day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
+            if (time_test_button_clicked == true)
+            {
+                Debug.WriteLine("HELLO");
+                time_test_button_clicked = false;
+            }
+            if (button1_clicked == true)
+            {
+                Debug.WriteLine("HELLO");
+                button1_clicked = false;
+            }
+            Debug.WriteLine(time_test_button_clicked);
+            Debug.WriteLine(button1_clicked);
             if (_ticks <= TimeSpan.Zero)
             {
                 this.day_countdown_timer_label.Text = "DONE";
@@ -55,7 +75,6 @@ namespace Daily_Checklist_Pop_up
         private TimeSpan countdown_calculations()
         {
             // Determine time left in current local day and apply countdown on window countdown label.
-
             DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
             DateTime start_of_day = new DateTime();
             /*
@@ -65,11 +84,21 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine(end_of_day.TimeOfDay.TotalHours);
             Debug.WriteLine(DateTime.Now.TimeOfDay.TotalHours);
             TimeSpan remaining_time = end_of_day.TimeOfDay - DateTime.Now.TimeOfDay;
-            // Debug.WriteLine(remaining_time.ToString("HH:mm:ss"));
             Debug.WriteLine(string.Format("{0:HH:mm:ss tt}", end_of_day));
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", remaining_time));
-            // remaining_time = string.Format("{0:HH:mm:ss tt}", remaining_time);
             return remaining_time;
+        }
+        private bool time_test_button_clicked = false;
+        private void time_test_button_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Clicked");
+            time_test_button_clicked = true;
+        }
+        private bool button1_clicked = false;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("HEKKI");
+            button1_clicked = true;
         }
     }
 }
