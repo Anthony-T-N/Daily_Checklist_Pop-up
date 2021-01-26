@@ -20,16 +20,11 @@ namespace Daily_Checklist_Pop_up
         {
             _ticks = countdown_calculations();
             InitializeComponent();
+            countdown_progress_bar.Maximum = 10;
             day_countdown_timer.Tick += day_countdown_timer_Tick;
             day_countdown_timer.Interval = 1000;
             day_countdown_timer.Start();
             time_test_button.Click += new EventHandler(time_test_button_Click);
-            if (time_test_button_clicked == true)
-            {
-                Debug.WriteLine("HELLO");
-                time_test_button_clicked = false;
-            }
-            Debug.WriteLine(time_test_button_clicked);
             Debug.WriteLine("End here");
         }
         private void day_countdown_timer_Tick(object sender, EventArgs e)
@@ -37,6 +32,7 @@ namespace Daily_Checklist_Pop_up
             _ticks = _ticks.Subtract(_oneSecond);
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
+            countdown_progress_bar.Value++;
             if (_ticks <= TimeSpan.Zero)
             {
                 _ticks = countdown_calculations();
