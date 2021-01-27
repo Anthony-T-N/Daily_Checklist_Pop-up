@@ -15,12 +15,13 @@ namespace Daily_Checklist_Pop_up
     {
         private TimeSpan _ticks;
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
+        private DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
 
         public Form1()
         {
             _ticks = countdown_calculations();
             InitializeComponent();
-            countdown_progress_bar.Maximum = 10;
+            countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
             day_countdown_timer.Tick += day_countdown_timer_Tick;
             day_countdown_timer.Interval = 1000;
             day_countdown_timer.Start();
@@ -56,17 +57,15 @@ namespace Daily_Checklist_Pop_up
         private TimeSpan countdown_calculations()
         {
             // Determine time left in current local day and apply countdown on window countdown label.
-            DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
             TimeSpan remaining_time = end_of_day.TimeOfDay - DateTime.Now.TimeOfDay;
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", remaining_time));
             return remaining_time;
         }
-        private bool time_test_button_clicked = false;
         private void time_test_button_Click(object sender, EventArgs e)
         {
             TimeSpan time_reduce = new TimeSpan(0, 1, 1, 1);
             Debug.WriteLine("Clicked");
-            time_test_button_clicked = true;
+            countdown_progress_bar.Value += 3600;
             _ticks = _ticks.Subtract(time_reduce);
         }
     }

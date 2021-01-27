@@ -111,7 +111,7 @@ namespace Daily_Checklist_Pop_up
             // day_countdown_timer_label
             // 
             this.day_countdown_timer_label.AutoSize = true;
-            this.day_countdown_timer_label.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.day_countdown_timer_label.BackColor = System.Drawing.Color.Transparent;
             this.day_countdown_timer_label.ForeColor = System.Drawing.Color.White;
             this.day_countdown_timer_label.Location = new System.Drawing.Point(135, 97);
             this.day_countdown_timer_label.Name = "day_countdown_timer_label";
@@ -130,9 +130,11 @@ namespace Daily_Checklist_Pop_up
             // 
             // countdown_progress_bar
             // 
-            this.countdown_progress_bar.Location = new System.Drawing.Point(36, 93);
+            this.countdown_progress_bar.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.countdown_progress_bar.ForeColor = System.Drawing.Color.Blue;
+            this.countdown_progress_bar.Location = new System.Drawing.Point(12, 93);
             this.countdown_progress_bar.Name = "countdown_progress_bar";
-            this.countdown_progress_bar.Size = new System.Drawing.Size(244, 23);
+            this.countdown_progress_bar.Size = new System.Drawing.Size(289, 23);
             this.countdown_progress_bar.TabIndex = 8;
             // 
             // Form1
