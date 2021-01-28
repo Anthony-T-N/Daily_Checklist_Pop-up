@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +22,9 @@ namespace Daily_Checklist_Pop_up
             _ticks = countdown_calculations();
             InitializeComponent();
             countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
+            Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Maximum);
+            countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
+            Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Value);
             day_countdown_timer.Tick += day_countdown_timer_Tick;
             day_countdown_timer.Interval = 1000;
             day_countdown_timer.Start();
@@ -33,11 +36,15 @@ namespace Daily_Checklist_Pop_up
             _ticks = _ticks.Subtract(_oneSecond);
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
-            countdown_progress_bar.Value++;
+            if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
+            {
+                countdown_progress_bar.Value++;
+            }
             if (_ticks <= TimeSpan.Zero)
             {
                 _ticks = countdown_calculations();
                 this.day_countdown_timer_label.Text = "RESET_TIMER";
+                countdown_progress_bar.Value = (int)_ticks.TotalSeconds;
                 // day_countdown_timer.Stop();
                 List<CheckBox> checkBoxes = new List<CheckBox>()
                 {
@@ -65,7 +72,15 @@ namespace Daily_Checklist_Pop_up
         {
             TimeSpan time_reduce = new TimeSpan(0, 1, 1, 1);
             Debug.WriteLine("Clicked");
-            countdown_progress_bar.Value += 3600;
+            if (((int)time_reduce.TotalSeconds + countdown_progress_bar.Value) <= countdown_progress_bar.Maximum)
+            {
+                countdown_progress_bar.Value += (int)time_reduce.TotalSeconds;
+            }
+            else
+            {
+                Debug.WriteLine("Add 10 Secs");
+                countdown_progress_bar.Value += 10;
+            }
             _ticks = _ticks.Subtract(time_reduce);
         }
     }
