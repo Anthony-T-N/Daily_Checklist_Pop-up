@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,11 +16,21 @@ namespace Daily_Checklist_Pop_up
         private TimeSpan _ticks;
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
+        private List<CheckBox> checkBoxes = new List<CheckBox>();
 
         public Form1()
         {
             _ticks = countdown_calculations();
             InitializeComponent();
+            checkBoxes = new List<CheckBox>()
+            {
+                    checkBox1,
+                    checkBox2,
+                    checkBox3,
+                    checkBox4,
+                    checkBox5,
+                    checkBox6
+            };
             countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
             Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Maximum);
             countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
@@ -40,21 +50,25 @@ namespace Daily_Checklist_Pop_up
             {
                 countdown_progress_bar.Value++;
             }
+            for (int i = 0; i <= checkBoxes.Count - 1; i++)
+            {
+                Debug.WriteLine(checkBoxes[i].Checked);
+                if (checkBoxes[i].Checked == true)
+                {
+                    checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Strikeout);
+                }
+                // Unstrike text.
+                else
+                {
+                    checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Strikeout);
+                }
+            }
             if (_ticks <= TimeSpan.Zero)
             {
                 _ticks = countdown_calculations();
                 this.day_countdown_timer_label.Text = "RESET_TIMER";
-                countdown_progress_bar.Value = (int)_ticks.TotalSeconds;
+                countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
                 // day_countdown_timer.Stop();
-                List<CheckBox> checkBoxes = new List<CheckBox>()
-                {
-                    checkBox1,
-                    checkBox2,
-                    checkBox3,
-                    checkBox4,
-                    checkBox5,
-                    checkBox6
-                };
                 for (int i = 0; i <= checkBoxes.Count - 1; i++)
                 {
                     checkBoxes[i].Checked = false;

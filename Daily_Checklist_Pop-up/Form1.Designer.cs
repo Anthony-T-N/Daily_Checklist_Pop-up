@@ -111,9 +111,9 @@ namespace Daily_Checklist_Pop_up
             // day_countdown_timer_label
             // 
             this.day_countdown_timer_label.AutoSize = true;
-            this.day_countdown_timer_label.BackColor = System.Drawing.Color.Transparent;
+            this.day_countdown_timer_label.BackColor = System.Drawing.Color.DarkRed;
             this.day_countdown_timer_label.ForeColor = System.Drawing.Color.White;
-            this.day_countdown_timer_label.Location = new System.Drawing.Point(135, 97);
+            this.day_countdown_timer_label.Location = new System.Drawing.Point(135, 105);
             this.day_countdown_timer_label.Name = "day_countdown_timer_label";
             this.day_countdown_timer_label.Size = new System.Drawing.Size(37, 15);
             this.day_countdown_timer_label.TabIndex = 6;
@@ -121,20 +121,20 @@ namespace Daily_Checklist_Pop_up
             // 
             // time_test_button
             // 
-            this.time_test_button.Location = new System.Drawing.Point(109, 6);
+            this.time_test_button.Location = new System.Drawing.Point(2, 5);
             this.time_test_button.Name = "time_test_button";
-            this.time_test_button.Size = new System.Drawing.Size(75, 12);
+            this.time_test_button.Size = new System.Drawing.Size(28, 82);
             this.time_test_button.TabIndex = 7;
-            this.time_test_button.Text = "button1";
+            this.time_test_button.Text = "Test";
             this.time_test_button.UseVisualStyleBackColor = true;
             // 
             // countdown_progress_bar
             // 
             this.countdown_progress_bar.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.countdown_progress_bar.ForeColor = System.Drawing.Color.Blue;
-            this.countdown_progress_bar.Location = new System.Drawing.Point(12, 93);
+            this.countdown_progress_bar.Location = new System.Drawing.Point(12, 99);
             this.countdown_progress_bar.Name = "countdown_progress_bar";
-            this.countdown_progress_bar.Size = new System.Drawing.Size(289, 23);
+            this.countdown_progress_bar.Size = new System.Drawing.Size(289, 28);
             this.countdown_progress_bar.TabIndex = 8;
             // 
             // Form1
@@ -142,9 +142,8 @@ namespace Daily_Checklist_Pop_up
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(313, 121);
+            this.ClientSize = new System.Drawing.Size(313, 135);
             this.Controls.Add(this.day_countdown_timer_label);
-            this.Controls.Add(this.countdown_progress_bar);
             this.Controls.Add(this.time_test_button);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
@@ -152,6 +151,7 @@ namespace Daily_Checklist_Pop_up
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.countdown_progress_bar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Text = "Daily_Checklist_Pop-up";
