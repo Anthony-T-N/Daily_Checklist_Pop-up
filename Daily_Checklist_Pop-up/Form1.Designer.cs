@@ -111,7 +111,7 @@ namespace Daily_Checklist_Pop_up
             // day_countdown_timer_label
             // 
             this.day_countdown_timer_label.AutoSize = true;
-            this.day_countdown_timer_label.BackColor = System.Drawing.Color.DarkRed;
+            this.day_countdown_timer_label.BackColor = System.Drawing.Color.DarkBlue;
             this.day_countdown_timer_label.ForeColor = System.Drawing.Color.White;
             this.day_countdown_timer_label.Location = new System.Drawing.Point(135, 105);
             this.day_countdown_timer_label.Name = "day_countdown_timer_label";
@@ -141,7 +141,7 @@ namespace Daily_Checklist_Pop_up
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(313, 135);
             this.Controls.Add(this.day_countdown_timer_label);
             this.Controls.Add(this.time_test_button);
@@ -154,6 +154,7 @@ namespace Daily_Checklist_Pop_up
             this.Controls.Add(this.countdown_progress_bar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Daily_Checklist_Pop-up";
             this.ResumeLayout(false);
             this.PerformLayout();

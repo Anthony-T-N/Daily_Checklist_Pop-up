@@ -57,10 +57,10 @@ namespace Daily_Checklist_Pop_up
                 {
                     checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Strikeout);
                 }
-                // Unstrike text.
+                // Unstrike text if checkbox is unchecked.
                 else
                 {
-                    checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Strikeout);
+                    checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Regular);
                 }
             }
             if (_ticks <= TimeSpan.Zero)
