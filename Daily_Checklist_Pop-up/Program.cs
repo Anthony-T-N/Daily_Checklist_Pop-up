@@ -18,32 +18,7 @@ namespace Daily_Checklist_Pop_up
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MyCustomApplicationContext());
-        }
-    }
-    public class MyCustomApplicationContext : ApplicationContext
-    {
-        private NotifyIcon trayIcon;
-
-        public MyCustomApplicationContext()
-        {
-            // Initialize Tray Icon
-            trayIcon = new NotifyIcon()
-            {
-                Icon = Properties.Resources.Icon1,
-                ContextMenu = new ContextMenu(new MenuItem[] {
-                new MenuItem("Exit", Exit)
-            }),
-                Visible = true
-            };
-        }
-
-        void Exit(object sender, EventArgs e)
-        {
-            // Hide tray icon, otherwise it will remain shown until user mouses over it
-            trayIcon.Visible = false;
-
-            Application.Exit();
+            Application.Run(new Form1());
         }
     }
 }
