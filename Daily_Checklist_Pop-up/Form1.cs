@@ -1,4 +1,4 @@
-﻿using System;
+sing System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,28 +17,13 @@ namespace Daily_Checklist_Pop_up
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
         private List<CheckBox> checkBoxes = new List<CheckBox>();
-        private NotifyIcon trayIcon;
-        private System.Windows.Controls.ContextMenu trayMenu;
 
         public Form1()
         {
             _ticks = countdown_calculations();
             InitializeComponent();
-
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Name = "Program";
-
-            trayMenu = new System.Windows.Controls.ContextMenu();
-            trayMenu.MenuItems.Add("Exit");
-            trayMenu.MenuItems.Add("Show", FormShow);
-            trayIcon = new NotifyIcon();
-            trayIcon.Text = "MyTrayApp";
-            trayIcon.Icon = new Icon(SystemIcons.Application, 40, 40);
-            trayIcon.ContextMenu = trayMenu;
-            trayIcon.Visible = true;
-            TopMost = true;
-            Resize += new EventHandler(Form1_Resize);
-
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(1598, 873);
             checkBoxes = new List<CheckBox>()
             {
                     checkBox1,
@@ -62,6 +47,7 @@ namespace Daily_Checklist_Pop_up
         {
             _ticks = _ticks.Subtract(_oneSecond);
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
+            Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
@@ -113,32 +99,6 @@ namespace Daily_Checklist_Pop_up
                 countdown_progress_bar.Value += 10;
             }
             _ticks = _ticks.Subtract(time_reduce);
-        }
-
-        void Form1_Resize(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                ShowInTaskbar = false;
-                Hide();
-                trayIcon.Visible = true;
-            }
-        }
-        void FormShow(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                WindowState = FormWindowState.Normal;
-            }
-            ShowInTaskbar = true;
-            Show();
-            Focus();
-            trayIcon.Visible = false;
-        }
-        protected override void OnLoad(EventArgs e)
-        {
-            Visible = false;
-            ShowInTaskbar = false;
         }
     }
 }
