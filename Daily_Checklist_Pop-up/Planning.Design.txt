@@ -13,6 +13,7 @@ Brief: Application that allows users to tick off daily activities once completed
 === Features ===
 - Store and opened from the taskbar/system tray.
 [+] Progress timer bar.
+- Make timer label transparent.
 
 === Basic Visual Design === 
 

@@ -46,7 +46,7 @@ namespace Daily_Checklist_Pop_up
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox4.Location = new System.Drawing.Point(180, 74);
+            this.checkBox4.Location = new System.Drawing.Point(180, 62);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(71, 19);
             this.checkBox4.TabIndex = 3;
@@ -57,7 +57,7 @@ namespace Daily_Checklist_Pop_up
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox3.Location = new System.Drawing.Point(36, 74);
+            this.checkBox3.Location = new System.Drawing.Point(36, 62);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(68, 19);
             this.checkBox3.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace Daily_Checklist_Pop_up
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox2.Location = new System.Drawing.Point(36, 49);
+            this.checkBox2.Location = new System.Drawing.Point(36, 37);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(110, 19);
             this.checkBox2.TabIndex = 1;
@@ -79,7 +79,7 @@ namespace Daily_Checklist_Pop_up
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox1.Location = new System.Drawing.Point(36, 24);
+            this.checkBox1.Location = new System.Drawing.Point(36, 12);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(73, 19);
             this.checkBox1.TabIndex = 0;
@@ -90,7 +90,7 @@ namespace Daily_Checklist_Pop_up
             // 
             this.checkBox5.AutoSize = true;
             this.checkBox5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox5.Location = new System.Drawing.Point(180, 24);
+            this.checkBox5.Location = new System.Drawing.Point(180, 12);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(100, 19);
             this.checkBox5.TabIndex = 4;
@@ -101,7 +101,7 @@ namespace Daily_Checklist_Pop_up
             // 
             this.checkBox6.AutoSize = true;
             this.checkBox6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox6.Location = new System.Drawing.Point(180, 49);
+            this.checkBox6.Location = new System.Drawing.Point(180, 37);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(62, 19);
             this.checkBox6.TabIndex = 5;
@@ -111,9 +111,9 @@ namespace Daily_Checklist_Pop_up
             // day_countdown_timer_label
             // 
             this.day_countdown_timer_label.AutoSize = true;
-            this.day_countdown_timer_label.BackColor = System.Drawing.Color.DarkBlue;
+            this.day_countdown_timer_label.BackColor = System.Drawing.Color.Transparent;
             this.day_countdown_timer_label.ForeColor = System.Drawing.Color.White;
-            this.day_countdown_timer_label.Location = new System.Drawing.Point(135, 105);
+            this.day_countdown_timer_label.Location = new System.Drawing.Point(135, 108);
             this.day_countdown_timer_label.Name = "day_countdown_timer_label";
             this.day_countdown_timer_label.Size = new System.Drawing.Size(37, 15);
             this.day_countdown_timer_label.TabIndex = 6;
@@ -123,7 +123,7 @@ namespace Daily_Checklist_Pop_up
             // 
             this.time_test_button.Location = new System.Drawing.Point(2, 5);
             this.time_test_button.Name = "time_test_button";
-            this.time_test_button.Size = new System.Drawing.Size(28, 82);
+            this.time_test_button.Size = new System.Drawing.Size(28, 67);
             this.time_test_button.TabIndex = 7;
             this.time_test_button.Text = "Test";
             this.time_test_button.UseVisualStyleBackColor = true;
@@ -132,9 +132,9 @@ namespace Daily_Checklist_Pop_up
             // 
             this.countdown_progress_bar.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.countdown_progress_bar.ForeColor = System.Drawing.Color.Blue;
-            this.countdown_progress_bar.Location = new System.Drawing.Point(12, 99);
+            this.countdown_progress_bar.Location = new System.Drawing.Point(12, 90);
             this.countdown_progress_bar.Name = "countdown_progress_bar";
-            this.countdown_progress_bar.Size = new System.Drawing.Size(289, 28);
+            this.countdown_progress_bar.Size = new System.Drawing.Size(289, 15);
             this.countdown_progress_bar.TabIndex = 8;
             // 
             // Form1
@@ -142,7 +142,7 @@ namespace Daily_Checklist_Pop_up
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(313, 135);
+            this.ClientSize = new System.Drawing.Size(313, 128);
             this.Controls.Add(this.day_countdown_timer_label);
             this.Controls.Add(this.time_test_button);
             this.Controls.Add(this.checkBox6);

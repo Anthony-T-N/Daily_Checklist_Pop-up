@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,8 +22,10 @@ namespace Daily_Checklist_Pop_up
         {
             _ticks = countdown_calculations();
             InitializeComponent();
+            BringToFront();
+            day_countdown_timer_label.BackColor = System.Drawing.Color.Transparent;
             this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(1598, 873);
+            this.Location = new Point(1598, 880);
             checkBoxes = new List<CheckBox>()
             {
                     checkBox1,
