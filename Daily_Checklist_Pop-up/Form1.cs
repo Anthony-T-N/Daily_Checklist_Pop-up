@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,26 +14,20 @@ namespace Daily_Checklist_Pop_up
     public partial class Form1 : Form
     {
         private TimeSpan _ticks;
+        private List<CheckBox> checkBoxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
-        private List<CheckBox> checkBoxes = new List<CheckBox>();
 
         public Form1()
         {
             _ticks = countdown_calculations();
             InitializeComponent();
             BringToFront();
-            day_countdown_timer_label.BackColor = System.Drawing.Color.Transparent;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(1598, 880);
+            Rectangle workingArea = Screen.GetWorkingArea(this);
+            this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
             checkBoxes = new List<CheckBox>()
             {
-                    checkBox1,
-                    checkBox2,
-                    checkBox3,
-                    checkBox4,
-                    checkBox5,
-                    checkBox6
+                    checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
             };
             countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
             Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Maximum);
@@ -43,7 +37,6 @@ namespace Daily_Checklist_Pop_up
             day_countdown_timer.Interval = 1000;
             day_countdown_timer.Start();
             time_test_button.Click += new EventHandler(time_test_button_Click);
-            Debug.WriteLine("End here");
         }
         private void day_countdown_timer_Tick(object sender, EventArgs e)
         {
@@ -60,9 +53,9 @@ namespace Daily_Checklist_Pop_up
                 Debug.WriteLine(checkBoxes[i].Checked);
                 if (checkBoxes[i].Checked == true)
                 {
+                    // Strike through checkbox text if ticked.
                     checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Strikeout);
                 }
-                // Unstrike text if checkbox is unchecked.
                 else
                 {
                     checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Regular);
@@ -82,7 +75,6 @@ namespace Daily_Checklist_Pop_up
         }
         private TimeSpan countdown_calculations()
         {
-            // Determine time left in current local day and apply countdown on window countdown label.
             TimeSpan remaining_time = end_of_day.TimeOfDay - DateTime.Now.TimeOfDay;
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", remaining_time));
             return remaining_time;
