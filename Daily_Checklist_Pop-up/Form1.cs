@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,13 +17,14 @@ namespace Daily_Checklist_Pop_up
         private List<CheckBox> checkBoxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
+        Rectangle workingArea;
 
         public Form1()
         {
             _ticks = countdown_calculations();
             InitializeComponent();
             BringToFront();
-            Rectangle workingArea = Screen.GetWorkingArea(this);
+            workingArea  = Screen.GetWorkingArea(this);
             this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
             checkBoxes = new List<CheckBox>()
             {
@@ -44,6 +45,7 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
+            position_check();
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -78,6 +80,13 @@ namespace Daily_Checklist_Pop_up
             TimeSpan remaining_time = end_of_day.TimeOfDay - DateTime.Now.TimeOfDay;
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", remaining_time));
             return remaining_time;
+        }
+        private void position_check()
+        {
+            if (this.Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
+            {
+                this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
+            }
         }
         private void time_test_button_Click(object sender, EventArgs e)
         {
