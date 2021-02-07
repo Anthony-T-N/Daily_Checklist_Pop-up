@@ -41,6 +41,7 @@ namespace Daily_Checklist_Pop_up
             this.day_countdown_timer_label = new System.Windows.Forms.Label();
             this.time_test_button = new System.Windows.Forms.Button();
             this.countdown_progress_bar = new System.Windows.Forms.ProgressBar();
+            this.mynotifyicon = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // checkBox4
@@ -105,6 +106,10 @@ namespace Daily_Checklist_Pop_up
             this.countdown_progress_bar.ForeColor = System.Drawing.Color.Blue;
             this.countdown_progress_bar.Name = "countdown_progress_bar";
             // 
+            // mynotifyicon
+            // 
+            resources.ApplyResources(this.mynotifyicon, "mynotifyicon");
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -138,6 +143,7 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.Label day_countdown_timer_label;
         private System.Windows.Forms.ProgressBar countdown_progress_bar;
         private System.Windows.Forms.Button time_test_button;
+        private System.Windows.Forms.NotifyIcon mynotifyicon;
     }
 }
 

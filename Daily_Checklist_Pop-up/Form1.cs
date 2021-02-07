@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,12 +24,22 @@ namespace Daily_Checklist_Pop_up
             _ticks = countdown_calculations();
             InitializeComponent();
             BringToFront();
-            workingArea  = Screen.GetWorkingArea(this);
+
+            #region [System tray startup]
+            mynotifyicon.BalloonTipText = "Application Minimized.";
+            mynotifyicon.BalloonTipTitle = "test";
+            this.Resize += SetMinimizeState;
+            mynotifyicon.Click += ToggleMinimizeState;
+            #endregion
+
+            workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
             checkBoxes = new List<CheckBox>()
             {
                     checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
             };
+
+            #region [Progress bar and timer]
             countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
             Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Maximum);
             countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
@@ -37,7 +47,10 @@ namespace Daily_Checklist_Pop_up
             day_countdown_timer.Tick += day_countdown_timer_Tick;
             day_countdown_timer.Interval = 1000;
             day_countdown_timer.Start();
+            #endregion
+
             time_test_button.Click += new EventHandler(time_test_button_Click);
+
         }
         private void day_countdown_timer_Tick(object sender, EventArgs e)
         {
@@ -88,6 +101,24 @@ namespace Daily_Checklist_Pop_up
                 this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
             }
         }
+
+        // Toggle state between Normal and Minimized.
+        private void ToggleMinimizeState(object sender, EventArgs e)
+        {
+            bool isMinimized = this.WindowState == FormWindowState.Minimized;
+            this.WindowState = (isMinimized) ? FormWindowState.Normal : FormWindowState.Minimized;
+        }
+
+        // Show/Hide window and tray icon to match window state.
+        private void SetMinimizeState(object sender, EventArgs e)
+        {
+            bool isMinimized = this.WindowState == FormWindowState.Minimized;
+
+            this.ShowInTaskbar = !isMinimized;
+            mynotifyicon.Visible = isMinimized;
+            if (isMinimized) mynotifyicon.ShowBalloonTip(500, "Application", "Application minimized to tray.", ToolTipIcon.Info);
+        }
+
         private void time_test_button_Click(object sender, EventArgs e)
         {
             TimeSpan time_reduce = new TimeSpan(0, 1, 1, 1);
