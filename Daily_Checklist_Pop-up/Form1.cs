@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,6 +54,7 @@ namespace Daily_Checklist_Pop_up
         }
         private void day_countdown_timer_Tick(object sender, EventArgs e)
         {
+            hourly_notification();
             _ticks = _ticks.Subtract(_oneSecond);
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             Debug.WriteLine(this.Location);
@@ -99,6 +100,15 @@ namespace Daily_Checklist_Pop_up
             if (this.Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
             {
                 this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
+            }
+        }
+
+        private void hourly_notification()
+        {
+            Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
+            if (DateTime.Now.ToString("mm") == "00")
+            {
+                Debug.WriteLine("Check");
             }
         }
 
