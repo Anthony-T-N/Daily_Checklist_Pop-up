@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +49,7 @@ namespace Daily_Checklist_Pop_up
             day_countdown_timer.Start();
             #endregion
 
+            hide_button.Click += new EventHandler(hide_button_Click);
             time_test_button.Click += new EventHandler(time_test_button_Click);
 
         }
@@ -66,7 +67,7 @@ namespace Daily_Checklist_Pop_up
             }
             for (int i = 0; i <= checkBoxes.Count - 1; i++)
             {
-                Debug.WriteLine(checkBoxes[i].Checked);
+                // Debug.WriteLine(checkBoxes[i].Checked);
                 if (checkBoxes[i].Checked == true)
                 {
                     // Strike through checkbox text if ticked.
@@ -106,6 +107,7 @@ namespace Daily_Checklist_Pop_up
         private void hourly_notification()
         {
             Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
+            Debug.WriteLine(DateTime.Now.ToString("mm"));
             if (DateTime.Now.ToString("mm") == "00")
             {
                 Debug.WriteLine("Check");
@@ -143,6 +145,10 @@ namespace Daily_Checklist_Pop_up
                 countdown_progress_bar.Value += 10;
             }
             _ticks = _ticks.Subtract(time_reduce);
+        }
+        private void hide_button_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Close form");
         }
     }
 }

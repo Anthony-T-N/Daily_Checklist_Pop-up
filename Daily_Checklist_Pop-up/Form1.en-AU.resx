@@ -64,4 +64,17 @@
   <data name="mynotifyicon.Visible" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
   </data>
+  <assembly alias="System.Drawing.Primitives" name="System.Drawing.Primitives, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="hide_button.Location" type="System.Drawing.Point, System.Drawing.Primitives">
+    <value>286, 8</value>
+  </data>
+  <data name="hide_button.Size" type="System.Drawing.Size, System.Drawing.Primitives">
+    <value>15, 60</value>
+  </data>
+  <data name="hide_button.TabIndex" type="System.Int32, System.Private.CoreLib">
+    <value>9</value>
+  </data>
+  <data name="hide_button.Text" xml:space="preserve">
+    <value>hidebutton1</value>
+  </data>
 </root>
