@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -111,6 +111,7 @@ namespace Daily_Checklist_Pop_up
             if (DateTime.Now.ToString("mm") == "00")
             {
                 Debug.WriteLine("Check");
+                Show();
             }
         }
 
@@ -149,6 +150,9 @@ namespace Daily_Checklist_Pop_up
         private void hide_button_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Close form");
+            Debug.WriteLine(day_countdown_timer_label.Text);
+            Debug.WriteLine(day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")));
+            Hide();
         }
     }
 }
