@@ -55,12 +55,12 @@ namespace Daily_Checklist_Pop_up
         }
         private void day_countdown_timer_Tick(object sender, EventArgs e)
         {
-            hourly_notification();
             _ticks = _ticks.Subtract(_oneSecond);
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
             position_check();
+            hourly_notification();
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -106,11 +106,23 @@ namespace Daily_Checklist_Pop_up
 
         private void hourly_notification()
         {
+            /*
             Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
             Debug.WriteLine(DateTime.Now.ToString("mm"));
             if (DateTime.Now.ToString("mm") == "00")
             {
                 Debug.WriteLine("Check");
+                Show();
+            }
+            */
+            Debug.WriteLine(day_countdown_timer_label.Text);
+            Debug.WriteLine(day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")));
+            if ((day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "01"))
+            {
+                Hide();
+            }
+            if ((day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "00"))
+            {
                 Show();
             }
         }
@@ -150,9 +162,8 @@ namespace Daily_Checklist_Pop_up
         private void hide_button_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Close form");
-            Debug.WriteLine(day_countdown_timer_label.Text);
-            Debug.WriteLine(day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")));
-            Hide();
+            TimeSpan time_reduce = new TimeSpan(0, 0, 1, 0);
+            _ticks = _ticks.Subtract(time_reduce);
         }
     }
 }
