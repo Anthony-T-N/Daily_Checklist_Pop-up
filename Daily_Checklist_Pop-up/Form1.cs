@@ -17,6 +17,7 @@ namespace Daily_Checklist_Pop_up
         private List<CheckBox> checkBoxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
+        private bool checklist_completed = false;
         Rectangle workingArea;
 
         public Form1()
@@ -60,7 +61,10 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
             position_check();
-            hourly_notification();
+            if ((checkBoxes.Checked).Contains(false))
+            {
+                hourly_notification();
+            }
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -117,11 +121,11 @@ namespace Daily_Checklist_Pop_up
             */
             Debug.WriteLine(day_countdown_timer_label.Text);
             Debug.WriteLine(day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")));
-            if ((day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "01"))
+            if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "01")
             {
                 Hide();
             }
-            if ((day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "00"))
+            if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "00")
             {
                 Show();
             }
