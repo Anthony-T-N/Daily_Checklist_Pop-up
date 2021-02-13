@@ -61,10 +61,7 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
             position_check();
-            if ((checkBoxes.Checked).Contains(false))
-            {
-                hourly_notification();
-            }
+            hourly_notification();
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -119,15 +116,31 @@ namespace Daily_Checklist_Pop_up
                 Show();
             }
             */
-            Debug.WriteLine(day_countdown_timer_label.Text);
-            Debug.WriteLine(day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")));
-            if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "01")
+            bool hourly_notification_switch = false;
+            for (int i = 0; i <= checkBoxes.Count - 1; i++)
             {
-                Hide();
+                if (checkBoxes[i].Checked == false)
+                {
+                    hourly_notification_switch = true;
+                    Debug.WriteLine(day_countdown_timer_label.Text);
+                    Debug.WriteLine(day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")));
+                    if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "59")
+                    {
+                        Hide();
+                        return;
+                    }
+                    if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "00")
+                    {
+                        Show();
+                        return;
+                    }
+                }
             }
-            if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "00")
+            // If all checkboxes are checked, keep window hidden and deny user any hourly notifcations.
+            if (hourly_notification_switch == false)
             {
-                Show();
+                Debug.WriteLine("Keep Hidden");
+                Hide();
             }
         }
 
