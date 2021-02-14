@@ -17,7 +17,6 @@ namespace Daily_Checklist_Pop_up
         private List<CheckBox> checkBoxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
-        private bool checklist_completed = false;
         Rectangle workingArea;
 
         public Form1()
@@ -26,12 +25,14 @@ namespace Daily_Checklist_Pop_up
             InitializeComponent();
             BringToFront();
 
+            /*
             #region [System tray startup]
             mynotifyicon.BalloonTipText = "Application Minimized.";
             mynotifyicon.BalloonTipTitle = "test";
             this.Resize += SetMinimizeState;
             mynotifyicon.Click += ToggleMinimizeState;
             #endregion
+            */
 
             workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
@@ -58,7 +59,7 @@ namespace Daily_Checklist_Pop_up
         {
             _ticks = _ticks.Subtract(_oneSecond);
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
-            Debug.WriteLine(this.Location);
+            // Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
             position_check();
             hourly_notification();
@@ -124,26 +125,28 @@ namespace Daily_Checklist_Pop_up
                     hourly_notification_switch = true;
                     Debug.WriteLine(day_countdown_timer_label.Text);
                     Debug.WriteLine(day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")));
-                    if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "59")
-                    {
-                        Hide();
-                        return;
-                    }
-                    if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "00")
+                    if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "00" ||
+                         day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "30")
                     {
                         Show();
                         return;
                     }
+                    if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "59" ||
+                        day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "29")
+                    {
+                        Hide();
+                        return;
+                    }
                 }
             }
-            // If all checkboxes are checked, keep window hidden and deny user any hourly notifcations.
+            // If all checkboxes are checked, keep window hidden and disable hourly notifcations.
             if (hourly_notification_switch == false)
             {
                 Debug.WriteLine("Keep Hidden");
                 Hide();
             }
         }
-
+        /*
         // Toggle state between Normal and Minimized.
         private void ToggleMinimizeState(object sender, EventArgs e)
         {
@@ -160,6 +163,7 @@ namespace Daily_Checklist_Pop_up
             mynotifyicon.Visible = isMinimized;
             if (isMinimized) mynotifyicon.ShowBalloonTip(500, "Application", "Application minimized to tray.", ToolTipIcon.Info);
         }
+        */
 
         private void time_test_button_Click(object sender, EventArgs e)
         {
@@ -178,8 +182,7 @@ namespace Daily_Checklist_Pop_up
         }
         private void hide_button_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine("Close form");
-            TimeSpan time_reduce = new TimeSpan(0, 0, 1, 0);
+            TimeSpan time_reduce = new TimeSpan(0, 0, 1, 10);
             _ticks = _ticks.Subtract(time_reduce);
         }
     }
