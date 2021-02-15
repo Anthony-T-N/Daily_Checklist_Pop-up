@@ -117,6 +117,9 @@ namespace Daily_Checklist_Pop_up
                 Show();
             }
             */
+
+            // [BUG: Form cannot display when minutes is set at 29.
+
             bool hourly_notification_switch = false;
             for (int i = 0; i <= checkBoxes.Count - 1; i++)
             {
@@ -124,17 +127,18 @@ namespace Daily_Checklist_Pop_up
                 {
                     hourly_notification_switch = true;
                     Debug.WriteLine(day_countdown_timer_label.Text);
-                    Debug.WriteLine(day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")));
-                    if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "00" ||
-                         day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "30")
+                    string day_countdown_timer_label_minutes = day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")); 
+                    Debug.WriteLine(day_countdown_timer_label_minutes);
+                    if (day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30")
                     {
-                        Show();
+                        // Show();
+                        this.WindowState = FormWindowState.Normal;
                         return;
                     }
-                    if (day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "59" ||
-                        day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")) == "29")
+                    if (day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29")
                     {
-                        Hide();
+                        // Hide();
+                        this.WindowState = FormWindowState.Minimized;
                         return;
                     }
                 }
