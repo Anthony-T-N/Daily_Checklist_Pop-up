@@ -111,15 +111,19 @@ namespace Daily_Checklist_Pop_up
             /*
             Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
             Debug.WriteLine(DateTime.Now.ToString("mm"));
-            if (DateTime.Now.ToString("mm") == "00")
+            if (DateTime.Now.ToString("mm") == "00" || DateTime.Now.ToString("mm") == "30")
             {
-                Debug.WriteLine("Check");
-                Show();
+                // Show();
+                this.WindowState = FormWindowState.Normal;
+                return;
+            }
+            if (DateTime.Now.ToString("mm") == "59" || DateTime.Now.ToString("mm") == "29")
+            {
+                // Hide();
+                this.WindowState = FormWindowState.Minimized;
+                return;
             }
             */
-
-            // [BUG: Form cannot display when minutes is set at 29.
-
             bool hourly_notification_switch = false;
             for (int i = 0; i <= checkBoxes.Count - 1; i++)
             {
@@ -135,6 +139,7 @@ namespace Daily_Checklist_Pop_up
                         this.WindowState = FormWindowState.Normal;
                         return;
                     }
+                    // [BUG: Form cannot display when minutes is set at 29 or 59.]
                     if (day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29")
                     {
                         // Hide();
@@ -144,10 +149,12 @@ namespace Daily_Checklist_Pop_up
                 }
             }
             // If all checkboxes are checked, keep window hidden and disable hourly notifcations.
+            // [BUG: Checkboxes all checked forces window to remain minimized.]
             if (hourly_notification_switch == false)
             {
                 Debug.WriteLine("Keep Hidden");
-                Hide();
+                this.WindowState = FormWindowState.Minimized;
+                //Hide();
             }
         }
         /*
