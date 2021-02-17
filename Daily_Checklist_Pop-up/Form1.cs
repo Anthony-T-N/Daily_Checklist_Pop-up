@@ -13,6 +13,7 @@ namespace Daily_Checklist_Pop_up
 {
     public partial class Form1 : Form
     {
+        private bool temporary_unforce_switch = false;
         private TimeSpan _ticks;
         private List<CheckBox> checkBoxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
@@ -115,12 +116,14 @@ namespace Daily_Checklist_Pop_up
             {
                 // Show();
                 this.WindowState = FormWindowState.Normal;
+                temporary_unforce_switch = false;
                 return;
             }
-            if (DateTime.Now.ToString("mm") == "59" || DateTime.Now.ToString("mm") == "29")
+            if ((DateTime.Now.ToString("mm") == "59" || DateTime.Now.ToString("mm") == "29") && temporary_unforce_switch == false)
             {
                 // Hide();
                 this.WindowState = FormWindowState.Minimized;
+                temporary_unforce_switch = true;
                 return;
             }
             */
@@ -130,20 +133,20 @@ namespace Daily_Checklist_Pop_up
                 if (checkBoxes[i].Checked == false)
                 {
                     hourly_notification_switch = true;
-                    Debug.WriteLine(day_countdown_timer_label.Text);
                     string day_countdown_timer_label_minutes = day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")); 
-                    Debug.WriteLine(day_countdown_timer_label_minutes);
                     if (day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30")
                     {
                         // Show();
                         this.WindowState = FormWindowState.Normal;
+                        temporary_unforce_switch = false;
                         return;
                     }
-                    // [BUG: Form cannot display when minutes is set at 29 or 59.]
-                    if (day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29")
+                    // [BUG: Form cannot display when minutes is set at 29 or 59.] == Fixed
+                    if ((day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29") && temporary_unforce_switch == false)
                     {
                         // Hide();
                         this.WindowState = FormWindowState.Minimized;
+                        temporary_unforce_switch = true;
                         return;
                     }
                 }
