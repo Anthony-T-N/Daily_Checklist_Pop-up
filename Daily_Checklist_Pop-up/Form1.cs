@@ -112,21 +112,35 @@ namespace Daily_Checklist_Pop_up
             /*
             Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
             Debug.WriteLine(DateTime.Now.ToString("mm"));
-            if (DateTime.Now.ToString("mm") == "00" || DateTime.Now.ToString("mm") == "30")
+            bool hourly_notification_switch = false;
+            for (int i = 0; i <= checkBoxes.Count - 1; i++)
             {
-                // Show();
-                this.WindowState = FormWindowState.Normal;
-                temporary_unforce_switch = false;
-                return;
+                if (checkBoxes[i].Checked == false)
+                {
+                    if (DateTime.Now.ToString("mm") == "00" || DateTime.Now.ToString("mm") == "30")
+                    {
+                        // Show();
+                        this.WindowState = FormWindowState.Normal;
+                        temporary_unforce_switch = false;
+                        return;
+                    }
+                    if ((DateTime.Now.ToString("mm") == "59" || DateTime.Now.ToString("mm") == "29") && temporary_unforce_switch == false)
+                    {
+                        // Hide();
+                        this.WindowState = FormWindowState.Minimized;
+                        temporary_unforce_switch = true;
+                        return;
+                    }
+                }
             }
-            if ((DateTime.Now.ToString("mm") == "59" || DateTime.Now.ToString("mm") == "29") && temporary_unforce_switch == false)
+            if (hourly_notification_switch == false)
             {
-                // Hide();
+                Debug.WriteLine("Keep Hidden");
                 this.WindowState = FormWindowState.Minimized;
-                temporary_unforce_switch = true;
-                return;
+                //Hide();
             }
             */
+
             bool hourly_notification_switch = false;
             for (int i = 0; i <= checkBoxes.Count - 1; i++)
             {
