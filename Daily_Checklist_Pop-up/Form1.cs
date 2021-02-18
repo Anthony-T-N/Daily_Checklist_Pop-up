@@ -141,7 +141,6 @@ namespace Daily_Checklist_Pop_up
                         temporary_unforce_switch = false;
                         return;
                     }
-                    // [BUG: Form cannot display when minutes is set at 29 or 59.] == Fixed
                     if ((day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29") && temporary_unforce_switch == false)
                     {
                         // Hide();
@@ -196,8 +195,8 @@ namespace Daily_Checklist_Pop_up
         }
         private void hide_button_Click(object sender, EventArgs e)
         {
-            TimeSpan time_reduce = new TimeSpan(0, 0, 1, 10);
-            _ticks = _ticks.Subtract(time_reduce);
+            _ticks = new TimeSpan(0, 1, 31, 10);
+            //_ticks = _ticks.Subtract(new TimeSpan(0, 0, 1, 10));
         }
     }
 }
