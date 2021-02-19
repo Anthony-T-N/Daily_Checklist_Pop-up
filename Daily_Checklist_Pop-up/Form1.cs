@@ -25,7 +25,6 @@ namespace Daily_Checklist_Pop_up
             _ticks = countdown_calculations();
             InitializeComponent();
             BringToFront();
-
             /*
             #region [System tray startup]
             mynotifyicon.BalloonTipText = "Application Minimized.";
@@ -58,6 +57,10 @@ namespace Daily_Checklist_Pop_up
         }
         private void day_countdown_timer_Tick(object sender, EventArgs e)
         {
+            Focus();
+            Activate();
+            this.TopMost = true;
+            this.TopMost = false;
             _ticks = _ticks.Subtract(_oneSecond);
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             // Debug.WriteLine(this.Location);
@@ -166,10 +169,11 @@ namespace Daily_Checklist_Pop_up
             }
             // If all checkboxes are checked, keep window hidden and disable hourly notifcations.
             // [BUG: Checkboxes all checked forces window to remain minimized.]
-            if (hourly_notification_switch == false)
+            if (hourly_notification_switch == false && temporary_unforce_switch == false)
             {
                 Debug.WriteLine("Keep Hidden");
                 this.WindowState = FormWindowState.Minimized;
+                temporary_unforce_switch = true;
                 //Hide();
             }
         }
