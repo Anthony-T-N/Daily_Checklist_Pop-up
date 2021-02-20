@@ -1,3 +1,4 @@
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,14 +26,15 @@ namespace Daily_Checklist_Pop_up
             _ticks = countdown_calculations();
             InitializeComponent();
             BringToFront();
-            /*
+            
             #region [System tray startup]
-            mynotifyicon.BalloonTipText = "Application Minimized.";
-            mynotifyicon.BalloonTipTitle = "test";
-            this.Resize += SetMinimizeState;
-            mynotifyicon.Click += ToggleMinimizeState;
+            this.mynotifyicon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info; //Shows the info icon so the user doesn't think there is an error.
+            this.mynotifyicon.BalloonTipText = "[Balloon Text when Minimized]";
+            this.mynotifyicon.BalloonTipTitle = "[Balloon Title when Minimized]";
+            this.mynotifyicon.Icon = Resources.Icon1; //The tray icon to use
+            this.mynotifyicon.Text = "[Message shown when hovering over tray icon]";
             #endregion
-            */
+            
 
             workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
@@ -55,12 +57,15 @@ namespace Daily_Checklist_Pop_up
             time_test_button.Click += new EventHandler(time_test_button_Click);
 
         }
+        // [BUG: Notification Window Constantly Steals Focus]
         private void day_countdown_timer_Tick(object sender, EventArgs e)
         {
+            /*
             Focus();
             Activate();
             this.TopMost = true;
             this.TopMost = false;
+            */
             _ticks = _ticks.Subtract(_oneSecond);
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             // Debug.WriteLine(this.Location);
@@ -96,6 +101,23 @@ namespace Daily_Checklist_Pop_up
                 }
             }
         }
+
+        private void ImportStatusForm_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                mynotifyicon.Visible = true;
+                mynotifyicon.ShowBalloonTip(3000);
+                this.ShowInTaskbar = false;
+            }
+        }
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+            mynotifyicon.Visible = false;
+        }
+
         private TimeSpan countdown_calculations()
         {
             TimeSpan remaining_time = end_of_day.TimeOfDay - DateTime.Now.TimeOfDay;
@@ -168,7 +190,6 @@ namespace Daily_Checklist_Pop_up
                 }
             }
             // If all checkboxes are checked, keep window hidden and disable hourly notifcations.
-            // [BUG: Checkboxes all checked forces window to remain minimized.]
             if (hourly_notification_switch == false && temporary_unforce_switch == false)
             {
                 Debug.WriteLine("Keep Hidden");
@@ -177,24 +198,6 @@ namespace Daily_Checklist_Pop_up
                 //Hide();
             }
         }
-        /*
-        // Toggle state between Normal and Minimized.
-        private void ToggleMinimizeState(object sender, EventArgs e)
-        {
-            bool isMinimized = this.WindowState == FormWindowState.Minimized;
-            this.WindowState = (isMinimized) ? FormWindowState.Normal : FormWindowState.Minimized;
-        }
-
-        // Show/Hide window and tray icon to match window state.
-        private void SetMinimizeState(object sender, EventArgs e)
-        {
-            bool isMinimized = this.WindowState == FormWindowState.Minimized;
-
-            this.ShowInTaskbar = !isMinimized;
-            mynotifyicon.Visible = isMinimized;
-            if (isMinimized) mynotifyicon.ShowBalloonTip(500, "Application", "Application minimized to tray.", ToolTipIcon.Info);
-        }
-        */
 
         private void time_test_button_Click(object sender, EventArgs e)
         {
