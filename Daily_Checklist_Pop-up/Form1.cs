@@ -26,15 +26,18 @@ namespace Daily_Checklist_Pop_up
             _ticks = countdown_calculations();
             InitializeComponent();
             BringToFront();
-            
+
             #region [System tray startup]
-            this.mynotifyicon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info; //Shows the info icon so the user doesn't think there is an error.
-            this.mynotifyicon.BalloonTipText = "[Balloon Text when Minimized]";
-            this.mynotifyicon.BalloonTipTitle = "[Balloon Title when Minimized]";
-            this.mynotifyicon.Icon = Resources.Icon1; //The tray icon to use
-            this.mynotifyicon.Text = "[Message shown when hovering over tray icon]";
+            mynotifyicon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info; //Shows the info icon so the user doesn't think there is an error.
+            mynotifyicon.BalloonTipText = "[Balloon Text when Minimized]";
+            mynotifyicon.BalloonTipTitle = "[Balloon Title when Minimized]";
+            mynotifyicon.Icon = Resources.Icon1; //The tray icon to use
+            mynotifyicon.Text = "[Message shown when hovering over tray icon]";
+            //this.Form1_Resize(this, new EventArgs());
+            this.Resize += new System.EventHandler(this.Form1_Resize);
+            mynotifyicon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
             #endregion
-            
+
 
             workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
@@ -102,19 +105,19 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void ImportStatusForm_Resize(object sender, EventArgs e)
+        private void Form1_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
+            if (WindowState == FormWindowState.Minimized)
             {
                 mynotifyicon.Visible = true;
-                mynotifyicon.ShowBalloonTip(3000);
-                this.ShowInTaskbar = false;
+                mynotifyicon.ShowBalloonTip(500);
+                ShowInTaskbar = false;
             }
         }
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-            this.ShowInTaskbar = true;
+            WindowState = FormWindowState.Normal;
+            ShowInTaskbar = true;
             mynotifyicon.Visible = false;
         }
 
