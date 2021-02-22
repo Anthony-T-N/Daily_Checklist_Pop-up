@@ -23,7 +23,7 @@ namespace Daily_Checklist_Pop_up
 
         public Form1()
         {
-            _ticks = countdown_calculations();
+            _ticks = Countdown_calculations();
             InitializeComponent();
             BringToFront();
 
@@ -35,7 +35,7 @@ namespace Daily_Checklist_Pop_up
             mynotifyicon.Text = "[Message shown when hovering over tray icon]";
             //this.Form1_Resize(this, new EventArgs());
             this.Resize += new System.EventHandler(this.Form1_Resize);
-            mynotifyicon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
+            mynotifyicon.MouseClick += NotifyIcon_MouseClick;
             #endregion
 
 
@@ -51,17 +51,17 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Maximum);
             countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
             Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Value);
-            day_countdown_timer.Tick += day_countdown_timer_Tick;
+            day_countdown_timer.Tick += Day_countdown_timer_Tick;
             day_countdown_timer.Interval = 1000;
             day_countdown_timer.Start();
             #endregion
 
-            hide_button.Click += new EventHandler(hide_button_Click);
-            time_test_button.Click += new EventHandler(time_test_button_Click);
+            hide_button.Click += new EventHandler(Hide_button_Click);
+            time_test_button.Click += new EventHandler(Time_test_button_Click);
 
         }
         // [BUG: Notification Window Constantly Steals Focus]
-        private void day_countdown_timer_Tick(object sender, EventArgs e)
+        private void Day_countdown_timer_Tick(object sender, EventArgs e)
         {
             /*
             Focus();
@@ -73,8 +73,8 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             // Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
-            position_check();
-            hourly_notification();
+            Position_check();
+            Hourly_notification();
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -94,7 +94,7 @@ namespace Daily_Checklist_Pop_up
             }
             if (_ticks <= TimeSpan.Zero)
             {
-                _ticks = countdown_calculations();
+                _ticks = Countdown_calculations();
                 this.day_countdown_timer_label.Text = "RESET_TIMER";
                 countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
                 // day_countdown_timer.Stop();
@@ -105,6 +105,15 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
+        /*
+        private void location_check(object sender, EventArgs e)
+        {
+            if (this.Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
+            {
+                this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
+            }
+        }
+        */
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
@@ -114,20 +123,20 @@ namespace Daily_Checklist_Pop_up
                 ShowInTaskbar = false;
             }
         }
-        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void NotifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             WindowState = FormWindowState.Normal;
             ShowInTaskbar = true;
             mynotifyicon.Visible = false;
         }
 
-        private TimeSpan countdown_calculations()
+        private TimeSpan Countdown_calculations()
         {
             TimeSpan remaining_time = end_of_day.TimeOfDay - DateTime.Now.TimeOfDay;
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", remaining_time));
             return remaining_time;
         }
-        private void position_check()
+        private void Position_check()
         {
             if (this.Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
             {
@@ -135,7 +144,8 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void hourly_notification()
+        // [BUG: Window stays opened regardless of attempts to minimize the form.]
+        private void Hourly_notification()
         {
             /*
             Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
@@ -202,7 +212,7 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void time_test_button_Click(object sender, EventArgs e)
+        private void Time_test_button_Click(object sender, EventArgs e)
         {
             TimeSpan time_reduce = new TimeSpan(0, 1, 1, 1);
             Debug.WriteLine("Clicked");
@@ -217,7 +227,7 @@ namespace Daily_Checklist_Pop_up
             }
             _ticks = _ticks.Subtract(time_reduce);
         }
-        private void hide_button_Click(object sender, EventArgs e)
+        private void Hide_button_Click(object sender, EventArgs e)
         {
             _ticks = new TimeSpan(0, 1, 31, 10);
             //_ticks = _ticks.Subtract(new TimeSpan(0, 0, 1, 10));
