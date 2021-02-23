@@ -16,9 +16,9 @@ namespace Daily_Checklist_Pop_up
     {
         private bool temporary_unforce_switch = false;
         private TimeSpan _ticks;
-        private List<CheckBox> checkBoxes = new List<CheckBox>();
+        private readonly List<CheckBox> checkBoxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
-        private DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
+        private readonly DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
         Rectangle workingArea;
 
         public Form1()
@@ -144,7 +144,6 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        // [BUG: Window stays opened regardless of attempts to minimize the form.]
         private void Hourly_notification()
         {
             /*
@@ -185,7 +184,8 @@ namespace Daily_Checklist_Pop_up
                 if (checkBoxes[i].Checked == false)
                 {
                     hourly_notification_switch = true;
-                    string day_countdown_timer_label_minutes = day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":")); 
+                    string day_countdown_timer_label_minutes = day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":"));
+                    // [BUG: Window stays opened regardless of attempts to minimize the form when timer's minutes set at 30]
                     if (day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30")
                     {
                         // Show();
@@ -214,8 +214,8 @@ namespace Daily_Checklist_Pop_up
 
         private void Time_test_button_Click(object sender, EventArgs e)
         {
+            Debug.WriteLine("Reduce time by 01:01:01");
             TimeSpan time_reduce = new TimeSpan(0, 1, 1, 1);
-            Debug.WriteLine("Clicked");
             if (((int)time_reduce.TotalSeconds + countdown_progress_bar.Value) <= countdown_progress_bar.Maximum)
             {
                 countdown_progress_bar.Value += (int)time_reduce.TotalSeconds;
@@ -229,7 +229,8 @@ namespace Daily_Checklist_Pop_up
         }
         private void Hide_button_Click(object sender, EventArgs e)
         {
-            _ticks = new TimeSpan(0, 1, 31, 10);
+            Debug.WriteLine("Set Time To 1:30:25");
+            _ticks = new TimeSpan(0, 1, 30, 25);
             //_ticks = _ticks.Subtract(new TimeSpan(0, 0, 1, 10));
         }
     }
