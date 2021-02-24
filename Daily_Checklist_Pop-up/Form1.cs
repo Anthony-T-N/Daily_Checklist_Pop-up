@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

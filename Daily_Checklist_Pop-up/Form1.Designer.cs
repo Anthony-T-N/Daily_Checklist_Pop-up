@@ -97,8 +97,9 @@ namespace Daily_Checklist_Pop_up
             // time_test_button
             // 
             resources.ApplyResources(this.time_test_button, "time_test_button");
+            this.time_test_button.BackColor = System.Drawing.SystemColors.HotTrack;
             this.time_test_button.Name = "time_test_button";
-            this.time_test_button.UseVisualStyleBackColor = true;
+            this.time_test_button.UseVisualStyleBackColor = false;
             // 
             // countdown_progress_bar
             // 
@@ -114,8 +115,9 @@ namespace Daily_Checklist_Pop_up
             // hide_button
             // 
             resources.ApplyResources(this.hide_button, "hide_button");
+            this.hide_button.BackColor = System.Drawing.Color.Red;
             this.hide_button.Name = "hide_button";
-            this.hide_button.UseVisualStyleBackColor = true;
+            this.hide_button.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 

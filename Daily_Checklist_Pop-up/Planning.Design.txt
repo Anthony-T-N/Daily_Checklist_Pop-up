@@ -3,7 +3,7 @@
 Brief: Application that allows users to tick off daily activities once completed. Reminds users of remaining activities left for the day.
 
 === Minimum Functions ===
-- Regularly show notifications of activities left to do.
+[+] Regularly show notifications of activities left to do.
 - Run on startup.
 [+] Interactive checkboxes next to activities.
 [+] Show a countdown of time left to complete tasks.
@@ -11,7 +11,7 @@ Brief: Application that allows users to tick off daily activities once completed
 [+] Cross out activities that have been checked.
 
 === Features ===
-- Store and opened from the taskbar/system tray.
+[+] Store and open from the taskbar/system tray.
 [+] Progress timer bar.
 
 === Basic Visual Design === 
@@ -25,3 +25,8 @@ Brief: Application that allows users to tick off daily activities once completed
 | + [ ] Tinker Device			 |
 |								 |
 ==================================
+
+[System tray startup]
+// https://stackoverflow.com/questions/7625421/minimize-app-to-system-tray
+// https://stackoverflow.com/questions/15337152/c-sharp-minimize-to-tray
+// https://stackoverflow.com/questions/18089244/minimizing-to-notification-area-and-double-click-is-not-opening-it-back-up
