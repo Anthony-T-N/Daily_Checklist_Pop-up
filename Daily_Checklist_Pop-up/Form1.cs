@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +20,7 @@ namespace Daily_Checklist_Pop_up
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private readonly DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
         Rectangle workingArea;
+        private bool temporary_unforce_switch_2 = false;
 
         public Form1()
         {
@@ -29,15 +30,14 @@ namespace Daily_Checklist_Pop_up
 
             #region [System tray startup]
             mynotifyicon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info; //Shows the info icon so the user doesn't think there is an error.
-            mynotifyicon.BalloonTipText = "[Balloon Text when Minimized]";
-            mynotifyicon.BalloonTipTitle = "[Balloon Title when Minimized]";
+            mynotifyicon.BalloonTipTitle = "[Daily_Checklist_Pop-up]";
+            mynotifyicon.BalloonTipText = "[Program Minimized]";
             mynotifyicon.Icon = Resources.Icon1; //The tray icon to use
-            mynotifyicon.Text = "[Message shown when hovering over tray icon]";
+            mynotifyicon.Text = "[Daily_Checklist_Program]";
             //this.Form1_Resize(this, new EventArgs());
             this.Resize += new System.EventHandler(this.Form1_Resize);
             mynotifyicon.MouseClick += NotifyIcon_MouseClick;
             #endregion
-
 
             workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
@@ -60,10 +60,10 @@ namespace Daily_Checklist_Pop_up
             time_test_button.Click += new EventHandler(Time_test_button_Click);
 
         }
-        // [BUG: Notification Window Constantly Steals Focus]
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
         {
             /*
+            // [BUG: Notification Window Constantly Steals Focus]
             Focus();
             Activate();
             this.TopMost = true;
@@ -186,11 +186,12 @@ namespace Daily_Checklist_Pop_up
                     hourly_notification_switch = true;
                     string day_countdown_timer_label_minutes = day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":"));
                     // [BUG: Window stays opened regardless of attempts to minimize the form when timer's minutes set at 30]
-                    if (day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30")
+                    if ((day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30") && temporary_unforce_switch_2 == false)
                     {
                         // Show();
                         this.WindowState = FormWindowState.Normal;
                         temporary_unforce_switch = false;
+                        temporary_unforce_switch_2 = true;
                         return;
                     }
                     if ((day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29") && temporary_unforce_switch == false)
@@ -198,6 +199,7 @@ namespace Daily_Checklist_Pop_up
                         // Hide();
                         this.WindowState = FormWindowState.Minimized;
                         temporary_unforce_switch = true;
+                        temporary_unforce_switch_2 = false;
                         return;
                     }
                 }
