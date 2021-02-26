@@ -35,12 +35,12 @@ namespace Daily_Checklist_Pop_up
             mynotifyicon.Icon = Resources.Icon1; //The tray icon to use
             mynotifyicon.Text = "[Daily_Checklist_Program]";
             //this.Form1_Resize(this, new EventArgs());
-            this.Resize += new System.EventHandler(this.Form1_Resize);
+            Resize += new System.EventHandler(Form1_Resize);
             mynotifyicon.MouseClick += NotifyIcon_MouseClick;
             #endregion
 
             workingArea = Screen.GetWorkingArea(this);
-            this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
+            Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
             checkBoxes = new List<CheckBox>()
             {
                     checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
@@ -95,7 +95,7 @@ namespace Daily_Checklist_Pop_up
             if (_ticks <= TimeSpan.Zero)
             {
                 _ticks = Countdown_calculations();
-                this.day_countdown_timer_label.Text = "RESET_TIMER";
+                day_countdown_timer_label.Text = "RESET_TIMER";
                 countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
                 // day_countdown_timer.Stop();
                 for (int i = 0; i <= checkBoxes.Count - 1; i++)
@@ -138,9 +138,9 @@ namespace Daily_Checklist_Pop_up
         }
         private void Position_check()
         {
-            if (this.Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
+            if (Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
             {
-                this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
+                Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
             }
         }
 
@@ -189,7 +189,7 @@ namespace Daily_Checklist_Pop_up
                     if ((day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30") && temporary_unforce_switch_2 == false)
                     {
                         // Show();
-                        this.WindowState = FormWindowState.Normal;
+                        WindowState = FormWindowState.Normal;
                         temporary_unforce_switch = false;
                         temporary_unforce_switch_2 = true;
                         return;
@@ -197,7 +197,7 @@ namespace Daily_Checklist_Pop_up
                     if ((day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29") && temporary_unforce_switch == false)
                     {
                         // Hide();
-                        this.WindowState = FormWindowState.Minimized;
+                        WindowState = FormWindowState.Minimized;
                         temporary_unforce_switch = true;
                         temporary_unforce_switch_2 = false;
                         return;
@@ -208,7 +208,7 @@ namespace Daily_Checklist_Pop_up
             if (hourly_notification_switch == false && temporary_unforce_switch == false)
             {
                 Debug.WriteLine("Keep Hidden");
-                this.WindowState = FormWindowState.Minimized;
+                WindowState = FormWindowState.Minimized;
                 temporary_unforce_switch = true;
                 //Hide();
             }
