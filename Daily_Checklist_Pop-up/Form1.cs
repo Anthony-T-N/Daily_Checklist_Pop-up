@@ -41,6 +41,10 @@ namespace Daily_Checklist_Pop_up
 
             workingArea = Screen.GetWorkingArea(this);
             Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
+
+            this.KeyPreview = true;
+            this.KeyPress += new KeyEventArgs(Form1_KeyDown);
+
             checkBoxes = new List<CheckBox>()
             {
                     checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
@@ -102,6 +106,13 @@ namespace Daily_Checklist_Pop_up
                 {
                     checkBoxes[i].Checked = false;
                 }
+            }
+        }
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.O)
+            {
+                Debug.WriteLine("Hello");
             }
         }
 
