@@ -43,7 +43,7 @@ namespace Daily_Checklist_Pop_up
             Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
 
             this.KeyPreview = true;
-            this.KeyPress += new KeyEventArgs(Form1_KeyDown);
+            this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
 
             checkBoxes = new List<CheckBox>()
             {
@@ -108,9 +108,10 @@ namespace Daily_Checklist_Pop_up
                 }
             }
         }
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyCode == Keys.O)
+            Debug.WriteLine((char)50);
+            if (e.KeyChar == 50)
             {
                 Debug.WriteLine("Hello");
             }
