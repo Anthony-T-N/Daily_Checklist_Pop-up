@@ -39,10 +39,11 @@ namespace Daily_Checklist_Pop_up
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.day_countdown_timer = new System.Windows.Forms.Timer(this.components);
             this.day_countdown_timer_label = new System.Windows.Forms.Label();
-            this.time_test_button = new System.Windows.Forms.Button();
+            this.fast_forward_test_button = new System.Windows.Forms.Button();
             this.countdown_progress_bar = new System.Windows.Forms.ProgressBar();
             this.mynotifyicon = new System.Windows.Forms.NotifyIcon(this.components);
             this.hide_button = new System.Windows.Forms.Button();
+            this.debug_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkBox4
@@ -94,39 +95,42 @@ namespace Daily_Checklist_Pop_up
             this.day_countdown_timer_label.ForeColor = System.Drawing.Color.White;
             this.day_countdown_timer_label.Name = "day_countdown_timer_label";
             // 
-            // time_test_button
+            // fast_forward_test_button
             // 
-            resources.ApplyResources(this.time_test_button, "time_test_button");
-            this.time_test_button.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.time_test_button.Name = "time_test_button";
-            this.time_test_button.UseVisualStyleBackColor = false;
+            this.fast_forward_test_button.BackColor = System.Drawing.SystemColors.HotTrack;
+            resources.ApplyResources(this.fast_forward_test_button, "fast_forward_test_button");
+            this.fast_forward_test_button.Name = "fast_forward_test_button";
+            this.fast_forward_test_button.UseVisualStyleBackColor = false;
             // 
             // countdown_progress_bar
             // 
-            resources.ApplyResources(this.countdown_progress_bar, "countdown_progress_bar");
             this.countdown_progress_bar.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.countdown_progress_bar.ForeColor = System.Drawing.Color.Blue;
+            resources.ApplyResources(this.countdown_progress_bar, "countdown_progress_bar");
             this.countdown_progress_bar.Name = "countdown_progress_bar";
-            // 
-            // mynotifyicon
-            // 
-            resources.ApplyResources(this.mynotifyicon, "mynotifyicon");
             // 
             // hide_button
             // 
-            resources.ApplyResources(this.hide_button, "hide_button");
             this.hide_button.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.hide_button, "hide_button");
             this.hide_button.Name = "hide_button";
             this.hide_button.UseVisualStyleBackColor = false;
+            // 
+            // debug_button
+            // 
+            resources.ApplyResources(this.debug_button, "debug_button");
+            this.debug_button.Name = "debug_button";
+            this.debug_button.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.Controls.Add(this.debug_button);
             this.Controls.Add(this.hide_button);
             this.Controls.Add(this.day_countdown_timer_label);
-            this.Controls.Add(this.time_test_button);
+            this.Controls.Add(this.fast_forward_test_button);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
@@ -152,9 +156,10 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.Timer day_countdown_timer;
         private System.Windows.Forms.Label day_countdown_timer_label;
         private System.Windows.Forms.ProgressBar countdown_progress_bar;
-        private System.Windows.Forms.Button time_test_button;
+        private System.Windows.Forms.Button fast_forward_test_button;
         private System.Windows.Forms.NotifyIcon mynotifyicon;
         private System.Windows.Forms.Button hide_button;
+        private System.Windows.Forms.Button debug_button;
     }
 }
 

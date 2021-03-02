@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,10 +62,10 @@ namespace Daily_Checklist_Pop_up
             #endregion
 
             hide_button.Visible = false;
-            time_test_button.Visible = false;
+            fast_forward_test_button.Visible = false;
 
             hide_button.Click += new EventHandler(Hide_button_Click);
-            time_test_button.Click += new EventHandler(Time_test_button_Click);
+            fast_forward_test_button.Click += new EventHandler(Time_test_button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
 
         }
@@ -118,7 +118,7 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine("[+] Debug Mode");
             debug_mode = true;
             hide_button.Visible = true;
-            time_test_button.Visible = true;
+            fast_forward_test_button.Visible = true;
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -129,7 +129,7 @@ namespace Daily_Checklist_Pop_up
                 Debug.WriteLine("[+] Debug Mode");
                 debug_mode = true;
                 hide_button.Visible = true;
-                time_test_button.Visible = true;
+                fast_forward_test_button.Visible = true;
             }
         }
 
@@ -174,8 +174,9 @@ namespace Daily_Checklist_Pop_up
 
         private void Hourly_notification()
         {
-            if (debug_mode == true)
+            if (debug_mode == false)
             {
+                Debug.WriteLine("Debug_Mode_Off");
                 Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
                 Debug.WriteLine(DateTime.Now.ToString("mm"));
                 bool hourly_notification_switch = false;
@@ -183,6 +184,7 @@ namespace Daily_Checklist_Pop_up
                 {
                     if (checkBoxes[i].Checked == false)
                     {
+                        hourly_notification_switch = true;
                         if (DateTime.Now.ToString("mm") == "00" || DateTime.Now.ToString("mm") == "30" && temporary_unforce_switch_2 == false)
                         {
                             // Show();
@@ -212,6 +214,7 @@ namespace Daily_Checklist_Pop_up
 
             if (debug_mode == true)
             {
+                Debug.WriteLine("Countdown_Timer_Debug_On");
                 bool hourly_notification_switch = false;
                 for (int i = 0; i <= checkBoxes.Count - 1; i++)
                 {
@@ -241,7 +244,7 @@ namespace Daily_Checklist_Pop_up
                 // If all checkboxes are checked, keep window hidden and disable hourly notifcations.
                 if (hourly_notification_switch == false && temporary_unforce_switch == false)
                 {
-                    Debug.WriteLine("Keep Hidden");
+                    Debug.WriteLine("Keep Hidden (Debug)");
                     WindowState = FormWindowState.Minimized;
                     temporary_unforce_switch = true;
                     //Hide();
