@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +22,7 @@ namespace Daily_Checklist_Pop_up
         Rectangle workingArea;
         private bool temporary_unforce_switch_2 = false;
         private bool debug_mode = false;
+        private bool reset_offical_timer = false;
 
         public Form1()
         {
@@ -115,10 +116,20 @@ namespace Daily_Checklist_Pop_up
         }
         private void Debug_Button_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine("[+] Debug Mode");
-            debug_mode = true;
-            hide_button.Visible = true;
-            fast_forward_test_button.Visible = true;
+            if (debug_mode == false)
+            {
+                Debug.WriteLine("[+] Debug Mode");
+                debug_mode = true;
+                hide_button.Visible = true;
+                fast_forward_test_button.Visible = true;
+            }
+            else if (debug_mode == true)
+            {
+                Debug.WriteLine("[+] Debug Mode Off");
+                debug_mode = false;
+                hide_button.Visible = false;
+                fast_forward_test_button.Visible = false;
+            }
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -176,7 +187,13 @@ namespace Daily_Checklist_Pop_up
         {
             if (debug_mode == false)
             {
-                Debug.WriteLine("Debug_Mode_Off");
+                if (reset_offical_timer == true)
+                {
+                    Debug.WriteLine("Debug_Mode_Off");
+                    Debug.WriteLine("Timer reset");
+                    _ticks = Countdown_calculations();
+                }
+                reset_offical_timer = false;
                 Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
                 Debug.WriteLine(DateTime.Now.ToString("mm"));
                 bool hourly_notification_switch = false;
@@ -214,7 +231,11 @@ namespace Daily_Checklist_Pop_up
 
             if (debug_mode == true)
             {
-                Debug.WriteLine("Countdown_Timer_Debug_On");
+                if (reset_offical_timer == false)
+                {
+                    Debug.WriteLine("Countdown_Timer_Debug_On");
+                    reset_offical_timer = true;
+                }
                 bool hourly_notification_switch = false;
                 for (int i = 0; i <= checkBoxes.Count - 1; i++)
                 {
