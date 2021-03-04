@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +19,7 @@ namespace Daily_Checklist_Pop_up
         private readonly List<CheckBox> checkBoxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private readonly DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
-        Rectangle workingArea;
+        private Rectangle workingArea;
         private bool temporary_unforce_switch_2 = false;
         private bool debug_mode = false;
         private bool reset_offical_timer = false;
@@ -68,6 +68,7 @@ namespace Daily_Checklist_Pop_up
             hide_button.Click += new EventHandler(Hide_button_Click);
             fast_forward_test_button.Click += new EventHandler(Time_test_button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
+            radioButton1.CheckedChanged += new EventHandler(radio_Button_check);
 
         }
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
@@ -113,6 +114,11 @@ namespace Daily_Checklist_Pop_up
                     checkBoxes[i].Checked = false;
                 }
             }
+        }
+        private void radio_Button_check(object sender, EventArgs e)
+        {
+            Debug.WriteLine(temporary_unforce_switch);
+            Debug.WriteLine(temporary_unforce_switch_2);
         }
         private void Debug_Button_Click(object sender, EventArgs e)
         {
