@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +23,7 @@ namespace Daily_Checklist_Pop_up
         private bool temporary_unforce_switch_2 = false;
         private bool debug_mode = false;
         private bool reset_offical_timer = false;
+        private bool isChecked = false;
 
         public Form1()
         {
@@ -117,8 +118,22 @@ namespace Daily_Checklist_Pop_up
         }
         private void radio_Button_check(object sender, EventArgs e)
         {
-            Debug.WriteLine(temporary_unforce_switch);
-            Debug.WriteLine(temporary_unforce_switch_2);
+            Debug.WriteLine("HEllo");
+            if (radioButton1.Checked)
+            {
+                Debug.WriteLine(temporary_unforce_switch);
+                Debug.WriteLine(temporary_unforce_switch_2);
+            }
+            if (radioButton1.Checked && isChecked == true)
+            {
+                radioButton1.Checked = false;
+                isChecked = false;
+            }
+            if (radioButton1.Checked && isChecked == false)
+            {
+                radioButton1.Checked = true;
+                isChecked = true;
+            }
         }
         private void Debug_Button_Click(object sender, EventArgs e)
         {
@@ -299,6 +314,11 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine("Set Time To 1:30:25");
             _ticks = new TimeSpan(0, 1, 30, 25);
             //_ticks = _ticks.Subtract(new TimeSpan(0, 0, 1, 10));
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
