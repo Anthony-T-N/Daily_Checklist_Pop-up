@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,6 +70,7 @@ namespace Daily_Checklist_Pop_up
             fast_forward_test_button.Click += new EventHandler(Time_test_button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
             radioButton1.CheckedChanged += new EventHandler(radio_Button_check);
+            checkBox7.CheckedChanged += new EventHandler(checkBox7_CheckedChanged);
 
         }
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
@@ -114,6 +115,19 @@ namespace Daily_Checklist_Pop_up
                 {
                     checkBoxes[i].Checked = false;
                 }
+            }
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox7.Checked)
+            {
+                Debug.WriteLine("temporary_unforce_switch: " + temporary_unforce_switch);
+                Debug.WriteLine("temporary_unforce_switch_2: " + temporary_unforce_switch_2);
+            }
+            else if (!checkBox7.Checked)
+            {
+                Debug.WriteLine("Checkbox unchecked");
             }
         }
         private void radio_Button_check(object sender, EventArgs e)
@@ -316,9 +330,6 @@ namespace Daily_Checklist_Pop_up
             //_ticks = _ticks.Subtract(new TimeSpan(0, 0, 1, 10));
         }
 
-        private void checkBox7_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

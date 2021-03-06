@@ -45,6 +45,7 @@ namespace Daily_Checklist_Pop_up
             this.hide_button = new System.Windows.Forms.Button();
             this.debug_button = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // checkBox4
@@ -130,11 +131,19 @@ namespace Daily_Checklist_Pop_up
             this.radioButton1.TabStop = true;
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // checkBox7
+            // 
+            resources.ApplyResources(this.checkBox7, "checkBox7");
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.Controls.Add(this.checkBox7);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.debug_button);
             this.Controls.Add(this.hide_button);
@@ -170,6 +179,7 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.Button hide_button;
         private System.Windows.Forms.Button debug_button;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.CheckBox checkBox7;
     }
 }
 
