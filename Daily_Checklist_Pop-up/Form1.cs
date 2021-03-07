@@ -24,6 +24,7 @@ namespace Daily_Checklist_Pop_up
         private bool debug_mode = false;
         private bool reset_offical_timer = false;
         private bool isChecked = false;
+        private bool debug_info_switch = false;
 
         public Form1()
         {
@@ -70,7 +71,7 @@ namespace Daily_Checklist_Pop_up
             fast_forward_test_button.Click += new EventHandler(Time_test_button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
             radioButton1.CheckedChanged += new EventHandler(radio_Button_check);
-            checkBox7.CheckedChanged += new EventHandler(checkBox7_CheckedChanged);
+            debug_checkbox.CheckedChanged += new EventHandler(debug_checkbox_CheckedChanged);
 
         }
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
@@ -88,6 +89,7 @@ namespace Daily_Checklist_Pop_up
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
             Position_check();
             Hourly_notification();
+            debug_info();
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -118,16 +120,24 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        private void debug_info()
         {
-            if (checkBox7.Checked)
+            if (debug_info_switch == true)
             {
                 Debug.WriteLine("temporary_unforce_switch: " + temporary_unforce_switch);
                 Debug.WriteLine("temporary_unforce_switch_2: " + temporary_unforce_switch_2);
             }
-            else if (!checkBox7.Checked)
+        }
+
+        private void debug_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (debug_checkbox.Checked)
             {
-                Debug.WriteLine("Checkbox unchecked");
+                debug_info_switch = true;
+            }
+            else if (!debug_checkbox.Checked)
+            {
+                debug_info_switch = false;
             }
         }
         private void radio_Button_check(object sender, EventArgs e)
