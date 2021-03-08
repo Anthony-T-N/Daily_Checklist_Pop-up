@@ -44,7 +44,6 @@ namespace Daily_Checklist_Pop_up
             this.mynotifyicon = new System.Windows.Forms.NotifyIcon(this.components);
             this.hide_button = new System.Windows.Forms.Button();
             this.debug_button = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.debug_checkbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -124,19 +123,12 @@ namespace Daily_Checklist_Pop_up
             this.debug_button.Name = "debug_button";
             this.debug_button.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
-            // 
-            resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // debug_checkbox
             // 
             resources.ApplyResources(this.debug_checkbox, "debug_checkbox");
             this.debug_checkbox.Name = "debug_checkbox";
             this.debug_checkbox.UseVisualStyleBackColor = true;
-            this.debug_checkbox.CheckedChanged += new System.EventHandler(this.debug_checkbox_CheckedChanged);
+            this.debug_checkbox.CheckedChanged += new System.EventHandler(this.Debug_checkbox_CheckedChanged);
             // 
             // Form1
             // 
@@ -144,7 +136,6 @@ namespace Daily_Checklist_Pop_up
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.Controls.Add(this.debug_checkbox);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.debug_button);
             this.Controls.Add(this.hide_button);
             this.Controls.Add(this.day_countdown_timer_label);
@@ -178,7 +169,6 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.NotifyIcon mynotifyicon;
         private System.Windows.Forms.Button hide_button;
         private System.Windows.Forms.Button debug_button;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.CheckBox debug_checkbox;
     }
 }

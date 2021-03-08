@@ -23,7 +23,6 @@ namespace Daily_Checklist_Pop_up
         private bool temporary_unforce_switch_2 = false;
         private bool debug_mode = false;
         private bool reset_offical_timer = false;
-        private bool isChecked = false;
         private bool debug_info_switch = false;
 
         public Form1()
@@ -66,12 +65,13 @@ namespace Daily_Checklist_Pop_up
 
             hide_button.Visible = false;
             fast_forward_test_button.Visible = false;
+            debug_checkbox.Visible = false;
 
             hide_button.Click += new EventHandler(Hide_button_Click);
             fast_forward_test_button.Click += new EventHandler(Time_test_button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
-            radioButton1.CheckedChanged += new EventHandler(radio_Button_check);
-            debug_checkbox.CheckedChanged += new EventHandler(debug_checkbox_CheckedChanged);
+            debug_checkbox.CheckedChanged += new EventHandler(Debug_checkbox_CheckedChanged);
+            this.LocationChanged += new EventHandler(Position_check);
 
         }
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
@@ -87,9 +87,9 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
             // Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
-            Position_check();
+            //Position_check();
             Hourly_notification();
-            debug_info();
+            Debug_info();
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -120,7 +120,7 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void debug_info()
+        private void Debug_info()
         {
             if (debug_info_switch == true)
             {
@@ -129,7 +129,7 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void debug_checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Debug_checkbox_CheckedChanged(object sender, EventArgs e)
         {
             if (debug_checkbox.Checked)
             {
@@ -140,25 +140,7 @@ namespace Daily_Checklist_Pop_up
                 debug_info_switch = false;
             }
         }
-        private void radio_Button_check(object sender, EventArgs e)
-        {
-            Debug.WriteLine("HEllo");
-            if (radioButton1.Checked)
-            {
-                Debug.WriteLine(temporary_unforce_switch);
-                Debug.WriteLine(temporary_unforce_switch_2);
-            }
-            if (radioButton1.Checked && isChecked == true)
-            {
-                radioButton1.Checked = false;
-                isChecked = false;
-            }
-            if (radioButton1.Checked && isChecked == false)
-            {
-                radioButton1.Checked = true;
-                isChecked = true;
-            }
-        }
+
         private void Debug_Button_Click(object sender, EventArgs e)
         {
             if (debug_mode == false)
@@ -167,6 +149,7 @@ namespace Daily_Checklist_Pop_up
                 debug_mode = true;
                 hide_button.Visible = true;
                 fast_forward_test_button.Visible = true;
+                debug_checkbox.Visible = true;
             }
             else if (debug_mode == true)
             {
@@ -174,6 +157,7 @@ namespace Daily_Checklist_Pop_up
                 debug_mode = false;
                 hide_button.Visible = false;
                 fast_forward_test_button.Visible = false;
+                debug_checkbox.Visible = false;
             }
         }
 
@@ -189,15 +173,6 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        /*
-        private void location_check(object sender, EventArgs e)
-        {
-            if (this.Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
-            {
-                this.Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
-            }
-        }
-        */
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
@@ -220,7 +195,7 @@ namespace Daily_Checklist_Pop_up
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", remaining_time));
             return remaining_time;
         }
-        private void Position_check()
+        private void Position_check(object sender, EventArgs e)
         {
             if (Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
             {
