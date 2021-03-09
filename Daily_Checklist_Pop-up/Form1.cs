@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,7 +72,6 @@ namespace Daily_Checklist_Pop_up
             debug_button.Click += new EventHandler(Debug_Button_Click);
             debug_checkbox.CheckedChanged += new EventHandler(Debug_checkbox_CheckedChanged);
             this.LocationChanged += new EventHandler(Position_check);
-
         }
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
         {
@@ -312,9 +311,9 @@ namespace Daily_Checklist_Pop_up
         {
             Debug.WriteLine("Set Time To 1:30:25");
             _ticks = new TimeSpan(0, 1, 30, 25);
+            // CHECK
+            countdown_progress_bar.Value = (int)_ticks.TotalSeconds;
             //_ticks = _ticks.Subtract(new TimeSpan(0, 0, 1, 10));
         }
-
-
     }
 }
