@@ -27,7 +27,7 @@ namespace Daily_Checklist_Pop_up
 
         public Form1()
         {
-            _ticks = Countdown_calculations();
+            _ticks = Countdown_Calculations();
             InitializeComponent();
             BringToFront();
 
@@ -67,11 +67,12 @@ namespace Daily_Checklist_Pop_up
             fast_forward_test_button.Visible = false;
             debug_checkbox.Visible = false;
 
-            hide_button.Click += new EventHandler(Hide_button_Click);
-            fast_forward_test_button.Click += new EventHandler(Time_test_button_Click);
+            hide_button.Click += new EventHandler(Hide_Button_Click);
+            fast_forward_test_button.Click += new EventHandler(Time_Test_Button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
-            debug_checkbox.CheckedChanged += new EventHandler(Debug_checkbox_CheckedChanged);
-            this.LocationChanged += new EventHandler(Position_check);
+            debug_checkbox.CheckedChanged += new EventHandler(Debug_Checkbox_CheckedChanged);
+            // Window flashes when moved.
+            LocationChanged += new EventHandler(Position_Check);
         }
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
         {
@@ -87,8 +88,8 @@ namespace Daily_Checklist_Pop_up
             // Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
             //Position_check();
-            Hourly_notification();
-            Debug_info();
+            Hourly_Notification();
+            Debug_Info();
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -108,7 +109,7 @@ namespace Daily_Checklist_Pop_up
             }
             if (_ticks <= TimeSpan.Zero)
             {
-                _ticks = Countdown_calculations();
+                _ticks = Countdown_Calculations();
                 day_countdown_timer_label.Text = "RESET_TIMER";
                 countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
                 // day_countdown_timer.Stop();
@@ -119,7 +120,7 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void Debug_info()
+        private void Debug_Info()
         {
             if (debug_info_switch == true)
             {
@@ -128,7 +129,7 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void Debug_checkbox_CheckedChanged(object sender, EventArgs e)
+        private void Debug_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
             if (debug_checkbox.Checked)
             {
@@ -188,13 +189,13 @@ namespace Daily_Checklist_Pop_up
             mynotifyicon.Visible = false;
         }
 
-        private TimeSpan Countdown_calculations()
+        private TimeSpan Countdown_Calculations()
         {
             TimeSpan remaining_time = end_of_day.TimeOfDay - DateTime.Now.TimeOfDay;
             Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", remaining_time));
             return remaining_time;
         }
-        private void Position_check(object sender, EventArgs e)
+        private void Position_Check(object sender, EventArgs e)
         {
             if (Location != new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8))
             {
@@ -202,7 +203,7 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void Hourly_notification()
+        private void Hourly_Notification()
         {
             if (debug_mode == false)
             {
@@ -210,7 +211,7 @@ namespace Daily_Checklist_Pop_up
                 {
                     Debug.WriteLine("Debug_Mode_Off");
                     Debug.WriteLine("Timer reset");
-                    _ticks = Countdown_calculations();
+                    _ticks = Countdown_Calculations();
                 }
                 reset_offical_timer = false;
                 Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
@@ -292,7 +293,7 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void Time_test_button_Click(object sender, EventArgs e)
+        private void Time_Test_Button_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Reduce time by 01:01:01");
             TimeSpan time_reduce = new TimeSpan(0, 1, 1, 1);
@@ -307,13 +308,11 @@ namespace Daily_Checklist_Pop_up
             }
             _ticks = _ticks.Subtract(time_reduce);
         }
-        private void Hide_button_Click(object sender, EventArgs e)
+        private void Hide_Button_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Set Time To 1:30:25");
             _ticks = new TimeSpan(0, 1, 30, 25);
-            // CHECK
-            countdown_progress_bar.Value = (int)_ticks.TotalSeconds;
-            //_ticks = _ticks.Subtract(new TimeSpan(0, 0, 1, 10));
+            countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
         }
     }
 }
