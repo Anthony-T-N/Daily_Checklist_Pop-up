@@ -126,9 +126,11 @@ namespace Daily_Checklist_Pop_up
             // debug_checkbox
             // 
             resources.ApplyResources(this.debug_checkbox, "debug_checkbox");
+            this.debug_checkbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.debug_checkbox.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.debug_checkbox.Name = "debug_checkbox";
-            this.debug_checkbox.UseVisualStyleBackColor = true;
-            this.debug_checkbox.CheckedChanged += new System.EventHandler(this.Debug_checkbox_CheckedChanged);
+            this.debug_checkbox.UseVisualStyleBackColor = false;
+            this.debug_checkbox.CheckedChanged += new System.EventHandler(this.Debug_Checkbox_CheckedChanged);
             // 
             // Form1
             // 

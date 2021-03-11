@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +38,7 @@ namespace Daily_Checklist_Pop_up
             mynotifyicon.Icon = Resources.Icon1; //The tray icon to use
             mynotifyicon.Text = "[Daily_Checklist_Program]";
             //this.Form1_Resize(this, new EventArgs());
-            Resize += new System.EventHandler(Form1_Resize);
+            Resize += new System.EventHandler(Window_Resize);
             mynotifyicon.MouseClick += NotifyIcon_MouseClick;
             #endregion
 
@@ -119,7 +119,6 @@ namespace Daily_Checklist_Pop_up
                 }
             }
         }
-
         private void Debug_Info()
         {
             if (debug_info_switch == true)
@@ -128,7 +127,6 @@ namespace Daily_Checklist_Pop_up
                 Debug.WriteLine("temporary_unforce_switch_2: " + temporary_unforce_switch_2);
             }
         }
-
         private void Debug_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
             if (debug_checkbox.Checked)
@@ -140,9 +138,23 @@ namespace Daily_Checklist_Pop_up
                 debug_info_switch = false;
             }
         }
-
+        // Approach 1 to initiate debug mode (Button press).
         private void Debug_Button_Click(object sender, EventArgs e)
         {
+            Initiate_Debug_Mode();
+        }
+        // Approach 2 to initiate debug mode (Key press).
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // If user presses shift + o.
+            if (e.KeyChar == 79)
+            {
+                Initiate_Debug_Mode();
+            }
+        }
+        private void Initiate_Debug_Mode()
+        {
+            // Form begins with debug_mode as false;
             if (debug_mode == false)
             {
                 Debug.WriteLine("[+] Debug Mode");
@@ -161,19 +173,9 @@ namespace Daily_Checklist_Pop_up
             }
         }
 
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // If user presses shift + o.
-            if (e.KeyChar == 79)
-            {
-                Debug.WriteLine("[+] Debug Mode");
-                debug_mode = true;
-                hide_button.Visible = true;
-                fast_forward_test_button.Visible = true;
-            }
-        }
 
-        private void Form1_Resize(object sender, EventArgs e)
+
+        private void Window_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
             {
@@ -202,7 +204,6 @@ namespace Daily_Checklist_Pop_up
                 Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
             }
         }
-
         private void Hourly_Notification()
         {
             if (debug_mode == false)
@@ -292,7 +293,6 @@ namespace Daily_Checklist_Pop_up
                 }
             }
         }
-
         private void Time_Test_Button_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Reduce time by 01:01:01");

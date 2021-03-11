@@ -341,6 +341,13 @@
   <data name="debug_checkbox.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
   </data>
+  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+  <data name="debug_checkbox.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing.Common">
+    <value>TopCenter</value>
+  </data>
+  <data name="debug_checkbox.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing.Common">
+    <value>BottomCenter</value>
+  </data>
   <data name="debug_checkbox.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>12, 62</value>
   </data>
@@ -349,6 +356,9 @@
   </data>
   <data name="debug_checkbox.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>12</value>
+  </data>
+  <data name="debug_checkbox.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing.Common">
+    <value>BottomCenter</value>
   </data>
   <data name="&gt;&gt;debug_checkbox.Name" xml:space="preserve">
     <value>debug_checkbox</value>
