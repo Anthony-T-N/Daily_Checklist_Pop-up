@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,9 +45,6 @@ namespace Daily_Checklist_Pop_up
             workingArea = Screen.GetWorkingArea(this);
             Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
 
-            this.KeyPreview = true;
-            this.KeyPress += new KeyPressEventHandler(Form1_KeyPress);
-
             checkBoxes = new List<CheckBox>()
             {
                     checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
@@ -66,7 +63,9 @@ namespace Daily_Checklist_Pop_up
             hide_button.Visible = false;
             fast_forward_test_button.Visible = false;
             debug_checkbox.Visible = false;
-
+            KeyPreview = true;
+            
+            KeyPress += new KeyPressEventHandler(Form1_KeyPress);
             hide_button.Click += new EventHandler(Hide_Button_Click);
             fast_forward_test_button.Click += new EventHandler(Time_Test_Button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
@@ -157,7 +156,7 @@ namespace Daily_Checklist_Pop_up
             // Form begins with debug_mode as false;
             if (debug_mode == false)
             {
-                Debug.WriteLine("[+] Debug Mode");
+                Debug.WriteLine("[+] Debug Mode On");
                 debug_mode = true;
                 hide_button.Visible = true;
                 fast_forward_test_button.Visible = true;
@@ -172,9 +171,6 @@ namespace Daily_Checklist_Pop_up
                 debug_checkbox.Visible = false;
             }
         }
-
-
-
         private void Window_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
@@ -211,7 +207,7 @@ namespace Daily_Checklist_Pop_up
                 if (reset_offical_timer == true)
                 {
                     Debug.WriteLine("Debug_Mode_Off");
-                    Debug.WriteLine("Timer reset");
+                    Debug.WriteLine("Timer reset to default");
                     _ticks = Countdown_Calculations();
                 }
                 reset_offical_timer = false;
