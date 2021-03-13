@@ -14,13 +14,13 @@ namespace Daily_Checklist_Pop_up
 {
     public partial class Form1 : Form
     {
-        private bool temporary_unforce_switch = false;
+        private bool show_switch = false;
+        private bool hide_switch = false;
         private TimeSpan _ticks;
         private readonly List<CheckBox> checkBoxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private readonly DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
         private Rectangle workingArea;
-        private bool temporary_unforce_switch_2 = false;
         private bool debug_mode = false;
         private bool reset_offical_timer = false;
         private bool debug_info_switch = false;
@@ -122,8 +122,8 @@ namespace Daily_Checklist_Pop_up
         {
             if (debug_info_switch == true)
             {
-                Debug.WriteLine("temporary_unforce_switch: " + temporary_unforce_switch);
-                Debug.WriteLine("temporary_unforce_switch_2: " + temporary_unforce_switch_2);
+                Debug.WriteLine("show_switch: " + show_switch);
+                Debug.WriteLine("hide_switch: " + hide_switch);
             }
         }
         private void Debug_Checkbox_CheckedChanged(object sender, EventArgs e)
@@ -219,29 +219,31 @@ namespace Daily_Checklist_Pop_up
                     if (checkBoxes[i].Checked == false)
                     {
                         hourly_notification_switch = true;
-                        if (DateTime.Now.ToString("mm") == "00" || DateTime.Now.ToString("mm") == "30" && temporary_unforce_switch_2 == false)
+                        // Show window when "mm" is 00 or 30.
+                        if (DateTime.Now.ToString("mm") == "00" || DateTime.Now.ToString("mm") == "30" && hide_switch == false)
                         {
                             // Show();
                             this.WindowState = FormWindowState.Normal;
-                            temporary_unforce_switch = false;
-                            temporary_unforce_switch_2 = true;
+                            show_switch = false;
+                            hide_switch = true;
                             return;
                         }
-                        if ((DateTime.Now.ToString("mm") == "59" || DateTime.Now.ToString("mm") == "29") && temporary_unforce_switch == false)
+                        // Hide window when "mm" is 59 or 29.
+                        if ((DateTime.Now.ToString("mm") == "59" || DateTime.Now.ToString("mm") == "29") && show_switch == false)
                         {
                             // Hide();
                             this.WindowState = FormWindowState.Minimized;
-                            temporary_unforce_switch = true;
-                            temporary_unforce_switch_2 = false;
+                            show_switch = true;
+                            hide_switch = false;
                             return;
                         }
                     }
                 }
-                if (hourly_notification_switch == false && temporary_unforce_switch == false)
+                if (hourly_notification_switch == false && show_switch == false)
                 {
                     Debug.WriteLine("Keep Hidden");
                     this.WindowState = FormWindowState.Minimized;
-                    temporary_unforce_switch = true;
+                    show_switch = true;
                     //Hide();
                 }
             }
@@ -261,30 +263,30 @@ namespace Daily_Checklist_Pop_up
                         hourly_notification_switch = true;
                         string day_countdown_timer_label_minutes = day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":"));
                         // [BUG: Window stays opened regardless of attempts to minimize the form when timer's minutes set at 30]
-                        if ((day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30") && temporary_unforce_switch_2 == false)
+                        if ((day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30") && hide_switch == false)
                         {
                             // Show();
                             WindowState = FormWindowState.Normal;
-                            temporary_unforce_switch = false;
-                            temporary_unforce_switch_2 = true;
+                            show_switch = false;
+                            hide_switch = true;
                             return;
                         }
-                        if ((day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29") && temporary_unforce_switch == false)
+                        if ((day_countdown_timer_label_minutes == "59" || day_countdown_timer_label_minutes == "29") && show_switch == false)
                         {
                             // Hide();
                             WindowState = FormWindowState.Minimized;
-                            temporary_unforce_switch = true;
-                            temporary_unforce_switch_2 = false;
+                            show_switch = true;
+                            hide_switch = false;
                             return;
                         }
                     }
                 }
                 // If all checkboxes are checked, keep window hidden and disable hourly notifcations.
-                if (hourly_notification_switch == false && temporary_unforce_switch == false)
+                if (hourly_notification_switch == false && show_switch == false)
                 {
                     Debug.WriteLine("Keep Hidden (Debug)");
                     WindowState = FormWindowState.Minimized;
-                    temporary_unforce_switch = true;
+                    show_switch = true;
                     //Hide();
                 }
             }
