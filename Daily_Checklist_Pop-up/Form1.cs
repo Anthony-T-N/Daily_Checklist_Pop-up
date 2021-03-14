@@ -17,13 +17,14 @@ namespace Daily_Checklist_Pop_up
         private bool show_switch = false;
         private bool hide_switch = false;
         private TimeSpan _ticks;
-        private readonly List<CheckBox> checkBoxes = new List<CheckBox>();
+        private readonly List<CheckBox> check_boxes = new List<CheckBox>();
         private readonly TimeSpan _oneSecond = new TimeSpan(0, 0, 0, 1);
         private readonly DateTime end_of_day = new DateTime().Date.AddDays(1).AddTicks(-1); // End of day.
         private Rectangle workingArea;
         private bool debug_mode = false;
         private bool reset_offical_timer = false;
         private bool debug_info_switch = false;
+        private List<bool> debug_info_list = new List<bool>();
 
         public Form1()
         {
@@ -45,9 +46,14 @@ namespace Daily_Checklist_Pop_up
             workingArea = Screen.GetWorkingArea(this);
             Location = new Point((workingArea.Right - Size.Width) + 8, (workingArea.Bottom - Size.Height) + 8);
 
-            checkBoxes = new List<CheckBox>()
+            check_boxes = new List<CheckBox>()
             {
-                    checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
+                checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
+            };
+
+            debug_info_list = new List<bool>()
+            {
+                debug_mode, hide_button.Visible, fast_forward_test_button.Visible, debug_checkbox.Visible
             };
 
             #region [Progress bar and timer]
@@ -93,17 +99,17 @@ namespace Daily_Checklist_Pop_up
             {
                 countdown_progress_bar.Value++;
             }
-            for (int i = 0; i <= checkBoxes.Count - 1; i++)
+            for (int i = 0; i <= check_boxes.Count - 1; i++)
             {
-                // Debug.WriteLine(checkBoxes[i].Checked);
-                if (checkBoxes[i].Checked == true)
+                // Debug.WriteLine(check_boxes[i].Checked);
+                if (check_boxes[i].Checked == true)
                 {
                     // Strike through checkbox text if ticked.
-                    checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Strikeout);
+                    check_boxes[i].Font = new Font(check_boxes[i].Font, FontStyle.Strikeout);
                 }
                 else
                 {
-                    checkBoxes[i].Font = new Font(checkBoxes[i].Font, FontStyle.Regular);
+                    check_boxes[i].Font = new Font(check_boxes[i].Font, FontStyle.Regular);
                 }
             }
             if (_ticks <= TimeSpan.Zero)
@@ -112,9 +118,9 @@ namespace Daily_Checklist_Pop_up
                 day_countdown_timer_label.Text = "RESET_TIMER";
                 countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
                 // day_countdown_timer.Stop();
-                for (int i = 0; i <= checkBoxes.Count - 1; i++)
+                for (int i = 0; i <= check_boxes.Count - 1; i++)
                 {
-                    checkBoxes[i].Checked = false;
+                    check_boxes[i].Checked = false;
                 }
             }
         }
@@ -157,18 +163,22 @@ namespace Daily_Checklist_Pop_up
             if (debug_mode == false)
             {
                 Debug.WriteLine("[+] Debug Mode On");
-                debug_mode = true;
-                hide_button.Visible = true;
-                fast_forward_test_button.Visible = true;
-                debug_checkbox.Visible = true;
+                for (int i = 0; i <= debug_info_list.Count - 1; i++)
+                {
+                    debug_info_list[i] = true;
+                    Debug.WriteLine(debug_info_list[i]);
+                    // Debug.WriteLine(nameof(debug_info_list[i]));
+                }
+                Debug.WriteLine("");
+                Debug.WriteLine(debug_mode);
             }
             else if (debug_mode == true)
             {
                 Debug.WriteLine("[+] Debug Mode Off");
-                debug_mode = false;
-                hide_button.Visible = false;
-                fast_forward_test_button.Visible = false;
-                debug_checkbox.Visible = false;
+                for (int i = 0; i <= debug_info_list.Count - 1; i++)
+                {
+                    debug_info_list[i] = false;
+                }
             }
         }
         private void Window_Resize(object sender, EventArgs e)
@@ -214,9 +224,9 @@ namespace Daily_Checklist_Pop_up
                 Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
                 Debug.WriteLine(DateTime.Now.ToString("mm"));
                 bool hourly_notification_switch = false;
-                for (int i = 0; i <= checkBoxes.Count - 1; i++)
+                for (int i = 0; i <= check_boxes.Count - 1; i++)
                 {
-                    if (checkBoxes[i].Checked == false)
+                    if (check_boxes[i].Checked == false)
                     {
                         hourly_notification_switch = true;
                         // Show window when "mm" is 00 or 30.
@@ -256,9 +266,9 @@ namespace Daily_Checklist_Pop_up
                     reset_offical_timer = true;
                 }
                 bool hourly_notification_switch = false;
-                for (int i = 0; i <= checkBoxes.Count - 1; i++)
+                for (int i = 0; i <= check_boxes.Count - 1; i++)
                 {
-                    if (checkBoxes[i].Checked == false)
+                    if (check_boxes[i].Checked == false)
                     {
                         hourly_notification_switch = true;
                         string day_countdown_timer_label_minutes = day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":"));
@@ -281,7 +291,7 @@ namespace Daily_Checklist_Pop_up
                         }
                     }
                 }
-                // If all checkboxes are checked, keep window hidden and disable hourly notifcations.
+                // If all check_boxes are checked, keep window hidden and disable hourly notifcations.
                 if (hourly_notification_switch == false && show_switch == false)
                 {
                     Debug.WriteLine("Keep Hidden (Debug)");
