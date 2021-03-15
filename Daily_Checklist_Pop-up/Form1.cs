@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +24,6 @@ namespace Daily_Checklist_Pop_up
         private bool debug_mode = false;
         private bool reset_offical_timer = false;
         private bool debug_info_switch = false;
-        private List<bool> debug_info_list = new List<bool>();
 
         public Form1()
         {
@@ -49,11 +48,6 @@ namespace Daily_Checklist_Pop_up
             check_boxes = new List<CheckBox>()
             {
                 checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
-            };
-
-            debug_info_list = new List<bool>()
-            {
-                debug_mode, hide_button.Visible, fast_forward_test_button.Visible, debug_checkbox.Visible
             };
 
             #region [Progress bar and timer]
@@ -163,22 +157,18 @@ namespace Daily_Checklist_Pop_up
             if (debug_mode == false)
             {
                 Debug.WriteLine("[+] Debug Mode On");
-                for (int i = 0; i <= debug_info_list.Count - 1; i++)
-                {
-                    debug_info_list[i] = true;
-                    Debug.WriteLine(debug_info_list[i]);
-                    // Debug.WriteLine(nameof(debug_info_list[i]));
-                }
-                Debug.WriteLine("");
-                Debug.WriteLine(debug_mode);
+                debug_mode = true;
+                hide_button.Visible = true;
+                fast_forward_test_button.Visible = true;
+                debug_checkbox.Visible = true;
             }
             else if (debug_mode == true)
             {
                 Debug.WriteLine("[+] Debug Mode Off");
-                for (int i = 0; i <= debug_info_list.Count - 1; i++)
-                {
-                    debug_info_list[i] = false;
-                }
+                debug_mode = false;
+                hide_button.Visible = false;
+                fast_forward_test_button.Visible = false;
+                debug_checkbox.Visible = false;
             }
         }
         private void Window_Resize(object sender, EventArgs e)

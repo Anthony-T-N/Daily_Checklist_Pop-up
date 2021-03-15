@@ -150,6 +150,7 @@ namespace Daily_Checklist_Pop_up
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.countdown_progress_bar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
