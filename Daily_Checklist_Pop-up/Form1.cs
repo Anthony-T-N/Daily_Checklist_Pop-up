@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -209,8 +209,8 @@ namespace Daily_Checklist_Pop_up
                     Debug.WriteLine("Debug_Mode_Off");
                     Debug.WriteLine("Timer reset to default");
                     _ticks = Countdown_Calculations();
+                    reset_offical_timer = false;
                 }
-                reset_offical_timer = false;
                 Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
                 Debug.WriteLine(DateTime.Now.ToString("mm"));
                 bool hourly_notification_switch = false;
@@ -262,7 +262,6 @@ namespace Daily_Checklist_Pop_up
                     {
                         hourly_notification_switch = true;
                         string day_countdown_timer_label_minutes = day_countdown_timer_label.Text.Substring(day_countdown_timer_label.Text.IndexOf(":") + 1, day_countdown_timer_label.Text.IndexOf(":"));
-                        // [BUG: Window stays opened regardless of attempts to minimize the form when timer's minutes set at 30]
                         if ((day_countdown_timer_label_minutes == "00" || day_countdown_timer_label_minutes == "30") && hide_switch == false)
                         {
                             // Show();
