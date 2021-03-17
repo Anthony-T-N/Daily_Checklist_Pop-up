@@ -216,6 +216,7 @@ namespace Daily_Checklist_Pop_up
                 bool hourly_notification_switch = false;
                 for (int i = 0; i <= check_boxes.Count - 1; i++)
                 {
+                    // If now checkboxes have been checked.
                     if (check_boxes[i].Checked == false)
                     {
                         hourly_notification_switch = true;
@@ -239,6 +240,8 @@ namespace Daily_Checklist_Pop_up
                         }
                     }
                 }
+                // Only reachable when all checkboxes have been checked.
+                // [BUG: When all checkboxes are checked and window is unminimized. Window fails to minimise again when all checkboxes are checked again]
                 if (hourly_notification_switch == false && show_switch == false)
                 {
                     Debug.WriteLine("Keep Hidden");
