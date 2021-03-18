@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -70,6 +70,7 @@ namespace Daily_Checklist_Pop_up
             fast_forward_test_button.Click += new EventHandler(Time_Test_Button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
             debug_checkbox.CheckedChanged += new EventHandler(Debug_Checkbox_CheckedChanged);
+            edit_checkbox_button.Click += new EventHandler(edit_checkbox_button_click);
             // Window flashes when moved.
             LocationChanged += new EventHandler(Position_Check);
         }
@@ -125,6 +126,10 @@ namespace Daily_Checklist_Pop_up
                 Debug.WriteLine("show_switch: " + show_switch);
                 Debug.WriteLine("hide_switch: " + hide_switch);
             }
+        }
+        private void edit_checkbox_button_click(object sender, EventArgs e)
+        {
+            checkBox1.Text = "Test-Test-Test-Test";
         }
         private void Debug_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
