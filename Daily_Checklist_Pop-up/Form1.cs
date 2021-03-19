@@ -130,6 +130,8 @@ namespace Daily_Checklist_Pop_up
         private void edit_checkbox_button_click(object sender, EventArgs e)
         {
             checkBox1.Text = "Test-Test-Test-Test";
+            checkBox1.BackColor = System.Drawing.Color.DarkRed;
+            Debug.WriteLine(change_checkbox_text.Text);
         }
         private void Debug_Checkbox_CheckedChanged(object sender, EventArgs e)
         {

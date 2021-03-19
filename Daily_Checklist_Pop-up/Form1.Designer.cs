@@ -46,6 +46,7 @@ namespace Daily_Checklist_Pop_up
             this.debug_button = new System.Windows.Forms.Button();
             this.debug_checkbox = new System.Windows.Forms.CheckBox();
             this.edit_checkbox_button = new System.Windows.Forms.Button();
+            this.change_checkbox_text = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // checkBox4
@@ -79,9 +80,10 @@ namespace Daily_Checklist_Pop_up
             // checkBox5
             // 
             resources.ApplyResources(this.checkBox5, "checkBox5");
+            this.checkBox5.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.checkBox5.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.UseVisualStyleBackColor = false;
             // 
             // checkBox6
             // 
@@ -139,11 +141,17 @@ namespace Daily_Checklist_Pop_up
             this.edit_checkbox_button.Name = "edit_checkbox_button";
             this.edit_checkbox_button.UseVisualStyleBackColor = true;
             // 
+            // change_checkbox_text
+            // 
+            resources.ApplyResources(this.change_checkbox_text, "change_checkbox_text");
+            this.change_checkbox_text.Name = "change_checkbox_text";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.Controls.Add(this.change_checkbox_text);
             this.Controls.Add(this.edit_checkbox_button);
             this.Controls.Add(this.debug_checkbox);
             this.Controls.Add(this.debug_button);
@@ -182,6 +190,7 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.Button debug_button;
         private System.Windows.Forms.CheckBox debug_checkbox;
         private System.Windows.Forms.Button edit_checkbox_button;
+        private System.Windows.Forms.TextBox change_checkbox_text;
     }
 }
 
