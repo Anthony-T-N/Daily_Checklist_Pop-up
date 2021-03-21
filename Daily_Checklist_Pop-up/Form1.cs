@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,6 +74,13 @@ namespace Daily_Checklist_Pop_up
             change_checkbox_text_5.Visible = false;
             change_checkbox_text_6.Visible = false;
 
+            change_checkbox_text_1.Text = checkBox1.Text;
+            change_checkbox_text_2.Text = checkBox2.Text;
+            change_checkbox_text_3.Text = checkBox3.Text;
+            change_checkbox_text_4.Text = checkBox4.Text;
+            change_checkbox_text_5.Text = checkBox5.Text;
+            change_checkbox_text_6.Text = checkBox6.Text;
+
             KeyPress += new KeyPressEventHandler(Form1_KeyPress);
             hide_button.Click += new EventHandler(Hide_Button_Click);
             fast_forward_test_button.Click += new EventHandler(Time_Test_Button_Click);
@@ -139,9 +146,11 @@ namespace Daily_Checklist_Pop_up
         private void edit_checkbox_button_click(object sender, EventArgs e)
         {
             checkBox1.Text = change_checkbox_text_1.Text;
-            checkBox1.BackColor = System.Drawing.Color.DarkRed;
-            Debug.WriteLine(change_checkbox_text_1.Text);
-
+            checkBox2.Text = change_checkbox_text_2.Text;
+            checkBox3.Text = change_checkbox_text_3.Text;
+            checkBox4.Text = change_checkbox_text_4.Text;
+            checkBox5.Text = change_checkbox_text_5.Text;
+            checkBox6.Text = change_checkbox_text_6.Text;
             Initiate_Checkbox_Edit_Mode();
         }
 
@@ -152,12 +161,6 @@ namespace Daily_Checklist_Pop_up
             {
                 Debug.WriteLine("[+] Checkbox Edit Mode On");
                 checkbox_edit_mode = true;
-                checkBox1.Visible = false;
-                checkBox2.Visible = false;
-                checkBox3.Visible = false;
-                checkBox4.Visible = false;
-                checkBox5.Visible = false;
-                checkBox6.Visible = false;
 
                 change_checkbox_text_1.Visible = true;
                 change_checkbox_text_2.Visible = true;
@@ -170,12 +173,6 @@ namespace Daily_Checklist_Pop_up
             {
                 Debug.WriteLine("[+] Checkbox Edit Mode Off");
                 checkbox_edit_mode = false;
-                checkBox1.Visible = true;
-                checkBox2.Visible = true;
-                checkBox3.Visible = true;
-                checkBox4.Visible = true;
-                checkBox5.Visible = true;
-                checkBox6.Visible = true;
 
                 change_checkbox_text_1.Visible = false;
                 change_checkbox_text_2.Visible = false;
