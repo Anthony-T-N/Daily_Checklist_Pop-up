@@ -63,16 +63,16 @@
   </data>
   <assembly alias="System.Drawing.Primitives" name="System.Drawing.Primitives, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBox4.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>171, 62</value>
+    <value>171, 12</value>
   </data>
   <data name="checkBox4.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>71, 19</value>
+    <value>62, 19</value>
   </data>
   <data name="checkBox4.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>3</value>
   </data>
   <data name="checkBox4.Text" xml:space="preserve">
-    <value>Example</value>
+    <value>Github</value>
   </data>
   <data name="&gt;&gt;checkBox4.Name" xml:space="preserve">
     <value>checkBox4</value>
@@ -171,7 +171,7 @@
     <value>True</value>
   </data>
   <data name="checkBox5.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>171, 12</value>
+    <value>171, 37</value>
   </data>
   <data name="checkBox5.Size" type="System.Drawing.Size, System.Drawing.Primitives">
     <value>100, 19</value>
@@ -198,16 +198,16 @@
     <value>True</value>
   </data>
   <data name="checkBox6.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>171, 37</value>
+    <value>171, 62</value>
   </data>
   <data name="checkBox6.Size" type="System.Drawing.Size, System.Drawing.Primitives">
-    <value>62, 19</value>
+    <value>71, 19</value>
   </data>
   <data name="checkBox6.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>5</value>
   </data>
   <data name="checkBox6.Text" xml:space="preserve">
-    <value>Github</value>
+    <value>Example</value>
   </data>
   <data name="&gt;&gt;checkBox6.Name" xml:space="preserve">
     <value>checkBox6</value>
