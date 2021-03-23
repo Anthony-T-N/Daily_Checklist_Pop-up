@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +25,7 @@ namespace Daily_Checklist_Pop_up
         private bool reset_offical_timer = false;
         private bool debug_info_switch = false;
 
+        private List<TextBox> change_checkboxes_text_list = new List<TextBox>();
         private bool checkbox_edit_mode = false;
 
         public Form1()
@@ -52,6 +53,23 @@ namespace Daily_Checklist_Pop_up
                 checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
             };
 
+            change_checkboxes_text_list = new List<TextBox>()
+            {
+                change_checkbox_text_1, 
+                change_checkbox_text_2, 
+                change_checkbox_text_3, 
+                change_checkbox_text_4, 
+                change_checkbox_text_5, 
+                change_checkbox_text_6
+            };
+
+            for (int i = 0; i <= change_checkboxes_text_list.Count - 1; i++)
+            {
+                change_checkboxes_text_list[i].Visible = false;
+                change_checkboxes_text_list[i].Text = check_boxes[i].Text;
+            }
+
+
             #region [Progress bar and timer]
             countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
             Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Maximum);
@@ -66,20 +84,6 @@ namespace Daily_Checklist_Pop_up
             fast_forward_test_button.Visible = false;
             debug_checkbox.Visible = false;
             KeyPreview = true;
-
-            change_checkbox_text_1.Visible = false;
-            change_checkbox_text_2.Visible = false;
-            change_checkbox_text_3.Visible = false;
-            change_checkbox_text_4.Visible = false;
-            change_checkbox_text_5.Visible = false;
-            change_checkbox_text_6.Visible = false;
-
-            change_checkbox_text_1.Text = checkBox1.Text;
-            change_checkbox_text_2.Text = checkBox2.Text;
-            change_checkbox_text_3.Text = checkBox3.Text;
-            change_checkbox_text_4.Text = checkBox4.Text;
-            change_checkbox_text_5.Text = checkBox5.Text;
-            change_checkbox_text_6.Text = checkBox6.Text;
 
             KeyPress += new KeyPressEventHandler(Form1_KeyPress);
             hide_button.Click += new EventHandler(Hide_Button_Click);
@@ -145,6 +149,12 @@ namespace Daily_Checklist_Pop_up
         }
         private void edit_checkbox_button_click(object sender, EventArgs e)
         {
+            for (int i = 0; i <= change_checkboxes_text_list.Count - 1; i++)
+            {
+                change_checkboxes_text_list[i].Visible = false;
+                change_checkboxes_text_list[i].Text = check_boxes[i].Text;
+            }
+            // Fix here
             checkBox1.Text = change_checkbox_text_1.Text;
             checkBox2.Text = change_checkbox_text_2.Text;
             checkBox3.Text = change_checkbox_text_3.Text;
@@ -182,8 +192,6 @@ namespace Daily_Checklist_Pop_up
                 change_checkbox_text_6.Visible = false;
             }
         }
-
-
         private void Debug_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
             if (debug_checkbox.Checked)
