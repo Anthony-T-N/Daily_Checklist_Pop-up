@@ -69,7 +69,6 @@ namespace Daily_Checklist_Pop_up
                 change_checkboxes_text_list[i].Text = check_boxes[i].Text;
             }
 
-
             #region [Progress bar and timer]
             countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
             Debug.WriteLine("Total Seconds: " + countdown_progress_bar.Maximum);
@@ -151,16 +150,8 @@ namespace Daily_Checklist_Pop_up
         {
             for (int i = 0; i <= change_checkboxes_text_list.Count - 1; i++)
             {
-                change_checkboxes_text_list[i].Visible = false;
-                change_checkboxes_text_list[i].Text = check_boxes[i].Text;
+                check_boxes[i].Text = change_checkboxes_text_list[i].Text;
             }
-            // Fix here
-            checkBox1.Text = change_checkbox_text_1.Text;
-            checkBox2.Text = change_checkbox_text_2.Text;
-            checkBox3.Text = change_checkbox_text_3.Text;
-            checkBox4.Text = change_checkbox_text_4.Text;
-            checkBox5.Text = change_checkbox_text_5.Text;
-            checkBox6.Text = change_checkbox_text_6.Text;
             Initiate_Checkbox_Edit_Mode();
         }
 
@@ -172,24 +163,20 @@ namespace Daily_Checklist_Pop_up
                 Debug.WriteLine("[+] Checkbox Edit Mode On");
                 checkbox_edit_mode = true;
 
-                change_checkbox_text_1.Visible = true;
-                change_checkbox_text_2.Visible = true;
-                change_checkbox_text_3.Visible = true;
-                change_checkbox_text_4.Visible = true;
-                change_checkbox_text_5.Visible = true;
-                change_checkbox_text_6.Visible = true;
+                for (int i = 0; i <= change_checkboxes_text_list.Count - 1; i++)
+                {
+                    change_checkboxes_text_list[i].Visible = true;
+                }
             }
             else if (checkbox_edit_mode == true)
             {
                 Debug.WriteLine("[+] Checkbox Edit Mode Off");
                 checkbox_edit_mode = false;
 
-                change_checkbox_text_1.Visible = false;
-                change_checkbox_text_2.Visible = false;
-                change_checkbox_text_3.Visible = false;
-                change_checkbox_text_4.Visible = false;
-                change_checkbox_text_5.Visible = false;
-                change_checkbox_text_6.Visible = false;
+                for (int i = 0; i <= change_checkboxes_text_list.Count - 1; i++)
+                {
+                    change_checkboxes_text_list[i].Visible = false;
+                }
             }
         }
         private void Debug_Checkbox_CheckedChanged(object sender, EventArgs e)
