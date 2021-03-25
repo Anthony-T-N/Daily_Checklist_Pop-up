@@ -151,6 +151,12 @@ namespace Daily_Checklist_Pop_up
             for (int i = 0; i <= change_checkboxes_text_list.Count - 1; i++)
             {
                 check_boxes[i].Text = change_checkboxes_text_list[i].Text;
+                // Checkbox text limit below 16.
+                if (change_checkboxes_text_list[i].Text.Length >= 16)
+                {
+                    change_checkboxes_text_list[i].Text = change_checkboxes_text_list[i].Text.Substring(0, 16);
+                }
+                check_boxes[i].Text = change_checkboxes_text_list[i].Text;
             }
             Initiate_Checkbox_Edit_Mode();
         }
