@@ -84,14 +84,16 @@ namespace Daily_Checklist_Pop_up
             debug_checkbox.Visible = false;
             KeyPreview = true;
 
+            #region [Event Handlers]
             KeyPress += new KeyPressEventHandler(Form1_KeyPress);
             hide_button.Click += new EventHandler(Hide_Button_Click);
             fast_forward_test_button.Click += new EventHandler(Time_Test_Button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
             debug_checkbox.CheckedChanged += new EventHandler(Debug_Checkbox_CheckedChanged);
-            edit_checkbox_button.Click += new EventHandler(edit_checkbox_button_click);
+            edit_checkbox_button.Click += new EventHandler(Edit_checkbox_button_click);
             // Window flashes when moved.
             LocationChanged += new EventHandler(Position_Check);
+            #endregion
         }
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
         {
@@ -146,15 +148,17 @@ namespace Daily_Checklist_Pop_up
                 Debug.WriteLine("hide_switch: " + hide_switch);
             }
         }
-        private void edit_checkbox_button_click(object sender, EventArgs e)
+        private void Edit_checkbox_button_click(object sender, EventArgs e)
         {
             for (int i = 0; i <= change_checkboxes_text_list.Count - 1; i++)
             {
                 check_boxes[i].Text = change_checkboxes_text_list[i].Text;
                 // Checkbox text limit below 16.
-                if (change_checkboxes_text_list[i].Text.Length >= 16)
+                if (change_checkboxes_text_list[i].Text.Length >= 17)
                 {
                     change_checkboxes_text_list[i].Text = change_checkboxes_text_list[i].Text.Substring(0, 16);
+                    MessageBox.Show("Maximum checkbox text reached", "Checkbox text error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 check_boxes[i].Text = change_checkboxes_text_list[i].Text;
             }
