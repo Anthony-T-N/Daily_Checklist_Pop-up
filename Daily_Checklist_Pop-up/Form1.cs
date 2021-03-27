@@ -157,7 +157,7 @@ namespace Daily_Checklist_Pop_up
                 if (change_checkboxes_text_list[i].Text.Length >= 17)
                 {
                     change_checkboxes_text_list[i].Text = change_checkboxes_text_list[i].Text.Substring(0, 16);
-                    MessageBox.Show("Maximum checkbox text reached", "Checkbox text error",
+                    MessageBox.Show("Maximum checkbox text reached! " + "\r\n" + "[Checkbox " + i + "]", "Checkbox Text Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 check_boxes[i].Text = change_checkboxes_text_list[i].Text;
@@ -167,7 +167,7 @@ namespace Daily_Checklist_Pop_up
 
         private void Initiate_Checkbox_Edit_Mode()
         {
-            // Form begins with debug_mode as false;
+            // Form begins with check_edit_mode as false;
             if (checkbox_edit_mode == false)
             {
                 Debug.WriteLine("[+] Checkbox Edit Mode On");
