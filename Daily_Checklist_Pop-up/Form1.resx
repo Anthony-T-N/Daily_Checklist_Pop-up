@@ -84,7 +84,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox4.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="checkBox3.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
@@ -111,7 +111,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox3.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="checkBox2.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
@@ -138,7 +138,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox2.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="checkBox1.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
@@ -165,7 +165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="checkBox5.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
@@ -192,7 +192,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox5.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="checkBox6.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
@@ -219,7 +219,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox6.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="day_countdown_timer_label.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
@@ -246,7 +246,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;day_countdown_timer_label.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="fast_forward_test_button.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>2, 5</value>
@@ -270,7 +270,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;fast_forward_test_button.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="countdown_progress_bar.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>12, 90</value>
@@ -291,7 +291,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;countdown_progress_bar.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="hide_button.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>2, 30</value>
@@ -315,7 +315,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hide_button.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="debug_button.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>297, 5</value>
@@ -336,7 +336,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;debug_button.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="debug_checkbox.AutoSize" type="System.Boolean, System.Private.CoreLib">
     <value>True</value>
@@ -370,7 +370,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;debug_checkbox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="edit_checkbox_button.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>297, 25</value>
@@ -391,7 +391,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;edit_checkbox_button.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="change_checkbox_text_1.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>55, 10</value>
@@ -412,7 +412,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;change_checkbox_text_1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="change_checkbox_text_2.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>55, 35</value>
@@ -433,7 +433,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;change_checkbox_text_2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="change_checkbox_text_3.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>55, 60</value>
@@ -454,7 +454,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;change_checkbox_text_3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="change_checkbox_text_4.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>191, 10</value>
@@ -475,7 +475,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;change_checkbox_text_4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="change_checkbox_text_5.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>191, 35</value>
@@ -496,7 +496,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;change_checkbox_text_5.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="change_checkbox_text_6.Location" type="System.Drawing.Point, System.Drawing.Primitives">
     <value>191, 60</value>
@@ -517,6 +517,33 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;change_checkbox_text_6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="current_mode_label.AutoSize" type="System.Boolean, System.Private.CoreLib">
+    <value>True</value>
+  </data>
+  <data name="current_mode_label.Location" type="System.Drawing.Point, System.Drawing.Primitives">
+    <value>12, 108</value>
+  </data>
+  <data name="current_mode_label.Size" type="System.Drawing.Size, System.Drawing.Primitives">
+    <value>38, 15</value>
+  </data>
+  <data name="current_mode_label.TabIndex" type="System.Int32, System.Private.CoreLib">
+    <value>20</value>
+  </data>
+  <data name="current_mode_label.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;current_mode_label.Name" xml:space="preserve">
+    <value>current_mode_label</value>
+  </data>
+  <data name="&gt;&gt;current_mode_label.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;current_mode_label.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;current_mode_label.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">

@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +68,7 @@ namespace Daily_Checklist_Pop_up
                 change_checkboxes_text_list[i].Visible = false;
                 change_checkboxes_text_list[i].Text = check_boxes[i].Text;
             }
+            current_mode_label.Visible = false;
 
             #region [Progress bar and timer]
             countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
@@ -167,6 +168,7 @@ namespace Daily_Checklist_Pop_up
 
         private void Initiate_Checkbox_Edit_Mode()
         {
+            Change_Mode_Label("Edit Checkbox Mode");
             // Form begins with check_edit_mode as false;
             if (checkbox_edit_mode == false)
             {
@@ -216,6 +218,7 @@ namespace Daily_Checklist_Pop_up
         }
         private void Initiate_Debug_Mode()
         {
+            Change_Mode_Label("Debug Mode");
             // Form begins with debug_mode as false;
             if (debug_mode == false)
             {
@@ -234,6 +237,19 @@ namespace Daily_Checklist_Pop_up
                 debug_checkbox.Visible = false;
             }
         }
+        private void Change_Mode_Label(string label_text)
+        {
+            if (current_mode_label.Visible == false)
+            {
+                current_mode_label.Visible = true;
+                current_mode_label.Text = label_text;
+            }
+            else if (current_mode_label.Visible == true)
+            {
+                current_mode_label.Visible = false;
+            }
+        }
+
         private void Window_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)

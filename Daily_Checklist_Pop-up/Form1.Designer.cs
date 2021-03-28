@@ -52,6 +52,7 @@ namespace Daily_Checklist_Pop_up
             this.change_checkbox_text_4 = new System.Windows.Forms.TextBox();
             this.change_checkbox_text_5 = new System.Windows.Forms.TextBox();
             this.change_checkbox_text_6 = new System.Windows.Forms.TextBox();
+            this.current_mode_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkBox4
@@ -176,11 +177,18 @@ namespace Daily_Checklist_Pop_up
             resources.ApplyResources(this.change_checkbox_text_6, "change_checkbox_text_6");
             this.change_checkbox_text_6.Name = "change_checkbox_text_6";
             // 
+            // current_mode_label
+            // 
+            resources.ApplyResources(this.current_mode_label, "current_mode_label");
+            this.current_mode_label.BackColor = System.Drawing.Color.White;
+            this.current_mode_label.Name = "current_mode_label";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.Controls.Add(this.current_mode_label);
             this.Controls.Add(this.change_checkbox_text_6);
             this.Controls.Add(this.change_checkbox_text_5);
             this.Controls.Add(this.change_checkbox_text_4);
@@ -231,6 +239,7 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.TextBox change_checkbox_text_4;
         private System.Windows.Forms.TextBox change_checkbox_text_5;
         private System.Windows.Forms.TextBox change_checkbox_text_6;
+        private System.Windows.Forms.Label current_mode_label;
     }
 }
 
