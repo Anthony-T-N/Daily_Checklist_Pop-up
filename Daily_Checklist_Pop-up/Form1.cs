@@ -69,6 +69,7 @@ namespace Daily_Checklist_Pop_up
                 change_checkboxes_text_list[i].Text = check_boxes[i].Text;
             }
             current_mode_label.Visible = false;
+            current_mode_label_2.Visible = false;
 
             #region [Progress bar and timer]
             countdown_progress_bar.Maximum = (int)end_of_day.TimeOfDay.TotalSeconds;
@@ -239,14 +240,29 @@ namespace Daily_Checklist_Pop_up
         }
         private void Change_Mode_Label(string label_text)
         {
-            if (current_mode_label.Visible == false)
+            if (label_text == "Edit Checkbox Mode")
             {
-                current_mode_label.Visible = true;
-                current_mode_label.Text = label_text;
+                if (current_mode_label.Visible == false)
+                {
+                    current_mode_label.Visible = true;
+                    current_mode_label.Text = label_text;
+                }
+                else if (current_mode_label.Visible == true)
+                {
+                    current_mode_label.Visible = false;
+                }
             }
-            else if (current_mode_label.Visible == true)
+            else if (label_text == "Debug Mode")
             {
-                current_mode_label.Visible = false;
+                if (current_mode_label_2.Visible == false)
+                {
+                    current_mode_label_2.Visible = true;
+                    current_mode_label_2.Text = label_text;
+                }
+                else if (current_mode_label_2.Visible == true)
+                {
+                    current_mode_label_2.Visible = false;
+                }
             }
         }
 
