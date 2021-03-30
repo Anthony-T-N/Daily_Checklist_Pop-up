@@ -96,7 +96,17 @@ namespace Daily_Checklist_Pop_up
             // Window flashes when moved.
             LocationChanged += new EventHandler(Position_Check);
             #endregion
+            Start_up_window();
         }
+        private void Start_up_window()
+        {
+            MessageBox.Show("Test message ", "Start up window",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Option to allow application to run at startup.
+
+            // Option for persistent checkbox options.
+        }
+
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
         {
             /*
@@ -159,7 +169,7 @@ namespace Daily_Checklist_Pop_up
                 if (change_checkboxes_text_list[i].Text.Length >= 17)
                 {
                     change_checkboxes_text_list[i].Text = change_checkboxes_text_list[i].Text.Substring(0, 16);
-                    MessageBox.Show("Maximum checkbox text reached! " + "\r\n" + "[Checkbox " + i + "]", "Checkbox Text Error",
+                    MessageBox.Show("Maximum checkbox text length reached! " + "\r\n" + "[Checkbox " + i + "]", "Checkbox Text Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 check_boxes[i].Text = change_checkboxes_text_list[i].Text;
