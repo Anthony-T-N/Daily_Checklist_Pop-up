@@ -258,7 +258,7 @@
     <value>7</value>
   </data>
   <data name="fast_forward_test_button.Text" xml:space="preserve">
-    <value>F</value>
+    <value>R</value>
   </data>
   <data name="&gt;&gt;fast_forward_test_button.Name" xml:space="preserve">
     <value>fast_forward_test_button</value>
@@ -303,7 +303,7 @@
     <value>9</value>
   </data>
   <data name="hide_button.Text" xml:space="preserve">
-    <value>H</value>
+    <value>S</value>
   </data>
   <data name="&gt;&gt;hide_button.Name" xml:space="preserve">
     <value>hide_button</value>
