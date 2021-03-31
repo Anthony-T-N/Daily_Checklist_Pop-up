@@ -100,9 +100,26 @@ namespace Daily_Checklist_Pop_up
         }
         private void Start_up_window()
         {
-            MessageBox.Show("Test message ", "Start up window",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
             // Option to allow application to run at startup.
+            // Displays the MessageBox.
+            DialogResult result;
+            result = MessageBox.Show("Test message ", "Start up window", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                // Closes the parent form.
+                this.Close();
+            }
+            else if (result == System.Windows.Forms.DialogResult.No)
+            {
+                Debug.WriteLine("Do not start at start-up");
+            }
+            else if (result == System.Windows.Forms.DialogResult.Cancel)
+            {
+                Debug.WriteLine("Exit");
+                // Closes the parent form.
+                System.Environment.Exit(0);
+            }
+
 
             // Option for persistent checkbox options.
         }
