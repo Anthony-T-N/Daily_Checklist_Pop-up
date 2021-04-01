@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -103,11 +103,10 @@ namespace Daily_Checklist_Pop_up
             // Option to allow application to run at startup.
             // Displays the MessageBox.
             DialogResult result;
-            result = MessageBox.Show("Test message ", "Start up window", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            result = MessageBox.Show("Always start at start-up ? ", "Start up window", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                // Closes the parent form.
-                this.Close();
+                Debug.WriteLine("Start at startup");
             }
             else if (result == System.Windows.Forms.DialogResult.No)
             {
@@ -116,12 +115,26 @@ namespace Daily_Checklist_Pop_up
             else if (result == System.Windows.Forms.DialogResult.Cancel)
             {
                 Debug.WriteLine("Exit");
+                System.Environment.Exit(0);
+            }
+            // Option for persistent checkbox options.
+            DialogResult persistent_question_window;
+            persistent_question_window = MessageBox.Show("Persistent checkbox options ? ", "Start up window", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (persistent_question_window == System.Windows.Forms.DialogResult.Yes)
+            {
                 // Closes the parent form.
+                this.Close();
+            }
+            else if (persistent_question_window == System.Windows.Forms.DialogResult.No)
+            {
+                Debug.WriteLine("Do not enable persistent checkbox options");
+            }
+            else if (persistent_question_window == System.Windows.Forms.DialogResult.Cancel)
+            {
+                Debug.WriteLine("Exit");
                 System.Environment.Exit(0);
             }
 
-
-            // Option for persistent checkbox options.
         }
 
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
