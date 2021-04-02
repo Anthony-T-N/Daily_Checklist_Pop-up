@@ -25,11 +25,18 @@ namespace Daily_Checklist_Pop_up
         private bool reset_offical_timer = false;
         private bool debug_info_switch = false;
 
+        private List<string> default_checkbox_options = new List<string>()
+        {
+            "Cleaning", "Digital Cleaning", "Exercise", "Github", "Programming", "Example"
+        };
+
         private List<TextBox> change_checkboxes_text_list = new List<TextBox>();
         private bool checkbox_edit_mode = false;
 
         public Form1()
         {
+            Start_up_window();
+
             _ticks = Countdown_Calculations();
             InitializeComponent();
             BringToFront();
@@ -88,22 +95,21 @@ namespace Daily_Checklist_Pop_up
 
             #region [Event Handlers]
             KeyPress += new KeyPressEventHandler(Form1_KeyPress);
-            hide_button.Click += new EventHandler(Hide_Button_Click);
-            fast_forward_test_button.Click += new EventHandler(Time_Test_Button_Click);
+            hide_button.Click += new EventHandler(Hide_Test_Button_Click);
+            fast_forward_test_button.Click += new EventHandler(Forward_Time_Test_Button_Click);
             debug_button.Click += new EventHandler(Debug_Button_Click);
             debug_checkbox.CheckedChanged += new EventHandler(Debug_Checkbox_CheckedChanged);
             edit_checkbox_button.Click += new EventHandler(Edit_checkbox_button_click);
             // Window flashes when moved.
             LocationChanged += new EventHandler(Position_Check);
             #endregion
-            Start_up_window();
         }
         private void Start_up_window()
         {
             // Option to allow application to run at startup.
             // Displays the MessageBox.
             DialogResult result;
-            result = MessageBox.Show("Always start at start-up ? ", "Start up window", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            result = MessageBox.Show("Always start application at start-up ? ", "Options Window", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 Debug.WriteLine("Start at startup");
@@ -119,11 +125,10 @@ namespace Daily_Checklist_Pop_up
             }
             // Option for persistent checkbox options.
             DialogResult persistent_question_window;
-            persistent_question_window = MessageBox.Show("Persistent checkbox options ? ", "Start up window", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            persistent_question_window = MessageBox.Show("Persistent checkbox options ? ", "Options Window", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (persistent_question_window == System.Windows.Forms.DialogResult.Yes)
             {
-                // Closes the parent form.
-                this.Close();
+                Debug.WriteLine("Enable persistent checkbox options");
             }
             else if (persistent_question_window == System.Windows.Forms.DialogResult.No)
             {
@@ -428,7 +433,7 @@ namespace Daily_Checklist_Pop_up
                 }
             }
         }
-        private void Time_Test_Button_Click(object sender, EventArgs e)
+        private void Forward_Time_Test_Button_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Reduce time by 01:01:01");
             TimeSpan time_reduce = new TimeSpan(0, 1, 1, 1);
@@ -443,11 +448,19 @@ namespace Daily_Checklist_Pop_up
             }
             _ticks = _ticks.Subtract(time_reduce);
         }
-        private void Hide_Button_Click(object sender, EventArgs e)
+        private void Hide_Test_Button_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("Set Time To 1:30:25");
             _ticks = new TimeSpan(0, 1, 30, 25);
             countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
+        }
+
+        private void Default_Revert()
+        {
+            for (int i = 0; i <= check_boxes.Count - 1; i++)
+            {
+                check_boxes[i].Text = default_checkbox_options[i];
+            }
         }
     }
 }
