@@ -54,6 +54,7 @@ namespace Daily_Checklist_Pop_up
             this.change_checkbox_text_6 = new System.Windows.Forms.TextBox();
             this.current_mode_label = new System.Windows.Forms.Label();
             this.current_mode_label_2 = new System.Windows.Forms.Label();
+            this.revert_default_checkbox_options_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkBox4
@@ -190,11 +191,18 @@ namespace Daily_Checklist_Pop_up
             this.current_mode_label_2.BackColor = System.Drawing.Color.White;
             this.current_mode_label_2.Name = "current_mode_label_2";
             // 
+            // revert_default_checkbox_options_button
+            // 
+            resources.ApplyResources(this.revert_default_checkbox_options_button, "revert_default_checkbox_options_button");
+            this.revert_default_checkbox_options_button.Name = "revert_default_checkbox_options_button";
+            this.revert_default_checkbox_options_button.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.Controls.Add(this.revert_default_checkbox_options_button);
             this.Controls.Add(this.current_mode_label_2);
             this.Controls.Add(this.current_mode_label);
             this.Controls.Add(this.change_checkbox_text_6);
@@ -249,6 +257,7 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.TextBox change_checkbox_text_6;
         private System.Windows.Forms.Label current_mode_label;
         private System.Windows.Forms.Label current_mode_label_2;
+        private System.Windows.Forms.Button revert_default_checkbox_options_button;
     }
 }
 

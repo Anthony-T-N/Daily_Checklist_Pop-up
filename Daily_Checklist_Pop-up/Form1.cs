@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -100,6 +100,7 @@ namespace Daily_Checklist_Pop_up
             debug_button.Click += new EventHandler(Debug_Button_Click);
             debug_checkbox.CheckedChanged += new EventHandler(Debug_Checkbox_CheckedChanged);
             edit_checkbox_button.Click += new EventHandler(Edit_checkbox_button_click);
+            revert_default_checkbox_options_button.Click += new EventHandler(Revert_Default_Checkbox_Options_Button_Click);
             // Window flashes when moved.
             LocationChanged += new EventHandler(Position_Check);
             #endregion
@@ -455,8 +456,9 @@ namespace Daily_Checklist_Pop_up
             countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
         }
 
-        private void Default_Revert()
+        private void Revert_Default_Checkbox_Options_Button_Click(object sender, EventArgs e)
         {
+            Debug.WriteLine("Revert Checkbox Options To Default");
             for (int i = 0; i <= check_boxes.Count - 1; i++)
             {
                 check_boxes[i].Text = default_checkbox_options[i];
