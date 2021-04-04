@@ -55,6 +55,7 @@ namespace Daily_Checklist_Pop_up
             this.current_mode_label = new System.Windows.Forms.Label();
             this.current_mode_label_2 = new System.Windows.Forms.Label();
             this.revert_default_checkbox_options_button = new System.Windows.Forms.Button();
+            this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // checkBox4
@@ -132,6 +133,7 @@ namespace Daily_Checklist_Pop_up
             // 
             resources.ApplyResources(this.debug_button, "debug_button");
             this.debug_button.Name = "debug_button";
+            this.MyToolTip.SetToolTip(this.debug_button, resources.GetString("debug_button.ToolTip"));
             this.debug_button.UseVisualStyleBackColor = true;
             // 
             // debug_checkbox
@@ -147,6 +149,7 @@ namespace Daily_Checklist_Pop_up
             // 
             resources.ApplyResources(this.edit_checkbox_button, "edit_checkbox_button");
             this.edit_checkbox_button.Name = "edit_checkbox_button";
+            this.MyToolTip.SetToolTip(this.edit_checkbox_button, resources.GetString("edit_checkbox_button.ToolTip"));
             this.edit_checkbox_button.UseVisualStyleBackColor = true;
             // 
             // change_checkbox_text_1
@@ -195,6 +198,7 @@ namespace Daily_Checklist_Pop_up
             // 
             resources.ApplyResources(this.revert_default_checkbox_options_button, "revert_default_checkbox_options_button");
             this.revert_default_checkbox_options_button.Name = "revert_default_checkbox_options_button";
+            this.MyToolTip.SetToolTip(this.revert_default_checkbox_options_button, resources.GetString("revert_default_checkbox_options_button.ToolTip"));
             this.revert_default_checkbox_options_button.UseVisualStyleBackColor = true;
             // 
             // Form1
@@ -258,6 +262,7 @@ namespace Daily_Checklist_Pop_up
         private System.Windows.Forms.Label current_mode_label;
         private System.Windows.Forms.Label current_mode_label_2;
         private System.Windows.Forms.Button revert_default_checkbox_options_button;
+        private System.Windows.Forms.ToolTip MyToolTip;
     }
 }
 

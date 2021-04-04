@@ -462,6 +462,7 @@ namespace Daily_Checklist_Pop_up
             for (int i = 0; i <= check_boxes.Count - 1; i++)
             {
                 check_boxes[i].Text = default_checkbox_options[i];
+                change_checkboxes_text_list[i].Text = default_checkbox_options[i];
             }
         }
     }

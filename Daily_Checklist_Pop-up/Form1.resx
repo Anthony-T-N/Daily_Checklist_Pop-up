@@ -326,6 +326,9 @@
   <data name="debug_button.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>10</value>
   </data>
+  <data name="debug_button.ToolTip" xml:space="preserve">
+    <value>Switch on debug mode.</value>
+  </data>
   <data name="&gt;&gt;debug_button.Name" xml:space="preserve">
     <value>debug_button</value>
   </data>
@@ -380,6 +383,9 @@
   </data>
   <data name="edit_checkbox_button.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>13</value>
+  </data>
+  <data name="edit_checkbox_button.ToolTip" xml:space="preserve">
+    <value>Edit current checkbox options.</value>
   </data>
   <data name="&gt;&gt;edit_checkbox_button.Name" xml:space="preserve">
     <value>edit_checkbox_button</value>
@@ -581,13 +587,16 @@
     <value>NoControl</value>
   </data>
   <data name="revert_default_checkbox_options_button.Location" type="System.Drawing.Point, System.Drawing.Primitives">
-    <value>297, 45</value>
+    <value>297, 44</value>
   </data>
   <data name="revert_default_checkbox_options_button.Size" type="System.Drawing.Size, System.Drawing.Primitives">
     <value>13, 14</value>
   </data>
   <data name="revert_default_checkbox_options_button.TabIndex" type="System.Int32, System.Private.CoreLib">
     <value>22</value>
+  </data>
+  <data name="revert_default_checkbox_options_button.ToolTip" xml:space="preserve">
+    <value>Revert checkbox options back to default.</value>
   </data>
   <data name="&gt;&gt;revert_default_checkbox_options_button.Name" xml:space="preserve">
     <value>revert_default_checkbox_options_button</value>
@@ -630,6 +639,12 @@
   </data>
   <data name="&gt;&gt;mynotifyicon.Type" xml:space="preserve">
     <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MyToolTip.Name" xml:space="preserve">
+    <value>MyToolTip</value>
+  </data>
+  <data name="&gt;&gt;MyToolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>
