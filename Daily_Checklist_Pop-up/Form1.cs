@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Daily_Checklist_Pop_up
         private bool debug_mode = false;
         private bool reset_offical_timer = false;
         private bool debug_info_switch = false;
+        private bool persistence_option_switch = false;
 
         private List<string> default_checkbox_options = new List<string>()
         {
@@ -62,11 +64,11 @@ namespace Daily_Checklist_Pop_up
 
             change_checkboxes_text_list = new List<TextBox>()
             {
-                change_checkbox_text_1, 
-                change_checkbox_text_2, 
-                change_checkbox_text_3, 
-                change_checkbox_text_4, 
-                change_checkbox_text_5, 
+                change_checkbox_text_1,
+                change_checkbox_text_2,
+                change_checkbox_text_3,
+                change_checkbox_text_4,
+                change_checkbox_text_5,
                 change_checkbox_text_6
             };
 
@@ -130,19 +132,19 @@ namespace Daily_Checklist_Pop_up
             if (persistent_question_window == System.Windows.Forms.DialogResult.Yes)
             {
                 Debug.WriteLine("Enable persistent checkbox options");
+                persistence_option_switch = true;
             }
             else if (persistent_question_window == System.Windows.Forms.DialogResult.No)
             {
                 Debug.WriteLine("Do not enable persistent checkbox options");
+                persistence_option_switch = false;
             }
             else if (persistent_question_window == System.Windows.Forms.DialogResult.Cancel)
             {
                 Debug.WriteLine("Exit");
                 System.Environment.Exit(0);
             }
-
         }
-
         private void Day_countdown_timer_Tick(object sender, EventArgs e)
         {
             /*
@@ -311,7 +313,6 @@ namespace Daily_Checklist_Pop_up
                 }
             }
         }
-
         private void Window_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
@@ -463,6 +464,28 @@ namespace Daily_Checklist_Pop_up
             {
                 check_boxes[i].Text = default_checkbox_options[i];
                 change_checkboxes_text_list[i].Text = default_checkbox_options[i];
+            }
+        }
+        private void Persistence_Option()
+        {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_options].txt");
+            if (persistence_option_switch == true)
+            {
+                if (System.IO.File.Exists(path))
+                {
+                    string[] lines = System.IO.File.ReadAllLines(path);
+                    for (int i = lines.Length; i > 0; i--)
+                    {
+                        string last_lines = lines[lines.Length - i];
+                        System.Console.WriteLine(last_lines);
+                    }
+                }
+                else if (!System.IO.File.Exists(path))
+                {
+                    Debug.WriteLine(" ");
+                    Debug.WriteLine("[*] Text file does not exist. Creating a new one.");
+                    Debug.WriteLine(" ");
+                }
             }
         }
     }
