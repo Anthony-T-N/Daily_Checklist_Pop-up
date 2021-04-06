@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,6 +133,7 @@ namespace Daily_Checklist_Pop_up
             {
                 Debug.WriteLine("Enable persistent checkbox options");
                 persistence_option_switch = true;
+                Persistence_Option();
             }
             else if (persistent_question_window == System.Windows.Forms.DialogResult.No)
             {
@@ -469,6 +470,7 @@ namespace Daily_Checklist_Pop_up
         private void Persistence_Option()
         {
             string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_options].txt");
+            // If user has enabled the persistence option.
             if (persistence_option_switch == true)
             {
                 if (System.IO.File.Exists(path))
@@ -477,7 +479,7 @@ namespace Daily_Checklist_Pop_up
                     for (int i = lines.Length; i > 0; i--)
                     {
                         string last_lines = lines[lines.Length - i];
-                        System.Console.WriteLine(last_lines);
+                        Debug.WriteLine(last_lines);
                     }
                 }
                 else if (!System.IO.File.Exists(path))
@@ -485,6 +487,16 @@ namespace Daily_Checklist_Pop_up
                     Debug.WriteLine(" ");
                     Debug.WriteLine("[*] Text file does not exist. Creating a new one.");
                     Debug.WriteLine(" ");
+                    using (StreamWriter sw = File.AppendText(path))
+                    {
+                        sw.WriteLine("Cleaning");
+                        sw.WriteLine("Digital Cleaning");
+                        sw.WriteLine("Exercise");
+                        sw.WriteLine("Github");
+                        sw.WriteLine("Programming");
+                        sw.WriteLine("Example");
+                        sw.Close();
+                    }
                 }
             }
         }
