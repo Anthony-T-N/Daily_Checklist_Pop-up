@@ -201,6 +201,14 @@ namespace Daily_Checklist_Pop_up
         }
         private void Edit_checkbox_button_click(object sender, EventArgs e)
         {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_options].txt");
+            if (persistence_option_switch == true)
+            {
+                using (StreamWriter sw = new StreamWriter(path, false))
+                {
+                   sw.Close();
+                }
+            }
             for (int i = 0; i <= change_checkboxes_text_list.Count - 1; i++)
             {
                 check_boxes[i].Text = change_checkboxes_text_list[i].Text;
@@ -212,6 +220,14 @@ namespace Daily_Checklist_Pop_up
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 check_boxes[i].Text = change_checkboxes_text_list[i].Text;
+                if (persistence_option_switch == true)
+                {
+                    using (StreamWriter sw = File.AppendText(path))
+                    {
+                        sw.WriteLine(check_boxes[i].Text);
+                        sw.Close();
+                    }
+                }
             }
             Initiate_Checkbox_Edit_Mode();
         }
