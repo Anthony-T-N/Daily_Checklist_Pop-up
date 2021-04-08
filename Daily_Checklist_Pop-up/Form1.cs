@@ -62,6 +62,19 @@ namespace Daily_Checklist_Pop_up
                 checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
             };
 
+            if (persistence_option_switch == true)
+            {
+                Debug.WriteLine("Writing details from text file to form.");
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_options].txt");
+                string[] lines = System.IO.File.ReadAllLines(path);
+                for (int i = 0; i <= check_boxes.Count - 1; i++)
+                {
+                    check_boxes[i].Text = lines[i];
+                }
+            }
+            Debug.WriteLine(checkBox1.Text);
+            System.Threading.Thread.Sleep(100);
+
             change_checkboxes_text_list = new List<TextBox>()
             {
                 change_checkbox_text_1,
@@ -231,7 +244,6 @@ namespace Daily_Checklist_Pop_up
             }
             Initiate_Checkbox_Edit_Mode();
         }
-
         private void Initiate_Checkbox_Edit_Mode()
         {
             Change_Mode_Label("Edit Checkbox Mode");
