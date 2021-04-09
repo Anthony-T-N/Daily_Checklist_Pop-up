@@ -31,12 +31,12 @@ namespace Daily_Checklist_Pop_up
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkbox_4 = new System.Windows.Forms.CheckBox();
+            this.checkbox_3 = new System.Windows.Forms.CheckBox();
+            this.checkbox_2 = new System.Windows.Forms.CheckBox();
+            this.checkbox_1 = new System.Windows.Forms.CheckBox();
+            this.checkbox_5 = new System.Windows.Forms.CheckBox();
+            this.checkbox_6 = new System.Windows.Forms.CheckBox();
             this.day_countdown_timer = new System.Windows.Forms.Timer(this.components);
             this.day_countdown_timer_label = new System.Windows.Forms.Label();
             this.fast_forward_test_button = new System.Windows.Forms.Button();
@@ -58,48 +58,48 @@ namespace Daily_Checklist_Pop_up
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // checkBox4
+            // checkbox_4
             // 
-            resources.ApplyResources(this.checkBox4, "checkBox4");
-            this.checkBox4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkbox_4, "checkbox_4");
+            this.checkbox_4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkbox_4.Name = "checkbox_4";
+            this.checkbox_4.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // checkbox_3
             // 
-            resources.ApplyResources(this.checkBox3, "checkBox3");
-            this.checkBox3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkbox_3, "checkbox_3");
+            this.checkbox_3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkbox_3.Name = "checkbox_3";
+            this.checkbox_3.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkbox_2
             // 
-            resources.ApplyResources(this.checkBox2, "checkBox2");
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkbox_2, "checkbox_2");
+            this.checkbox_2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkbox_2.Name = "checkbox_2";
+            this.checkbox_2.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkbox_1
             // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkbox_1, "checkbox_1");
+            this.checkbox_1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkbox_1.Name = "checkbox_1";
+            this.checkbox_1.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // checkbox_5
             // 
-            resources.ApplyResources(this.checkBox5, "checkBox5");
-            this.checkBox5.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.checkBox5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.UseVisualStyleBackColor = false;
+            resources.ApplyResources(this.checkbox_5, "checkbox_5");
+            this.checkbox_5.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.checkbox_5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkbox_5.Name = "checkbox_5";
+            this.checkbox_5.UseVisualStyleBackColor = false;
             // 
-            // checkBox6
+            // checkbox_6
             // 
-            resources.ApplyResources(this.checkBox6, "checkBox6");
-            this.checkBox6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkbox_6, "checkbox_6");
+            this.checkbox_6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkbox_6.Name = "checkbox_6";
+            this.checkbox_6.UseVisualStyleBackColor = true;
             // 
             // day_countdown_timer_label
             // 
@@ -206,27 +206,27 @@ namespace Daily_Checklist_Pop_up
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.Controls.Add(this.revert_default_checkbox_options_button);
-            this.Controls.Add(this.current_mode_label_2);
-            this.Controls.Add(this.current_mode_label);
             this.Controls.Add(this.change_checkbox_text_6);
             this.Controls.Add(this.change_checkbox_text_5);
             this.Controls.Add(this.change_checkbox_text_4);
             this.Controls.Add(this.change_checkbox_text_3);
             this.Controls.Add(this.change_checkbox_text_2);
             this.Controls.Add(this.change_checkbox_text_1);
+            this.Controls.Add(this.revert_default_checkbox_options_button);
+            this.Controls.Add(this.current_mode_label_2);
+            this.Controls.Add(this.current_mode_label);
             this.Controls.Add(this.edit_checkbox_button);
             this.Controls.Add(this.debug_checkbox);
             this.Controls.Add(this.debug_button);
             this.Controls.Add(this.hide_button);
             this.Controls.Add(this.day_countdown_timer_label);
             this.Controls.Add(this.fast_forward_test_button);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkbox_6);
+            this.Controls.Add(this.checkbox_5);
+            this.Controls.Add(this.checkbox_4);
+            this.Controls.Add(this.checkbox_3);
+            this.Controls.Add(this.checkbox_2);
+            this.Controls.Add(this.checkbox_1);
             this.Controls.Add(this.countdown_progress_bar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
@@ -238,12 +238,12 @@ namespace Daily_Checklist_Pop_up
 
         #endregion
 
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkbox_4;
+        private System.Windows.Forms.CheckBox checkbox_3;
+        private System.Windows.Forms.CheckBox checkbox_2;
+        private System.Windows.Forms.CheckBox checkbox_1;
+        private System.Windows.Forms.CheckBox checkbox_5;
+        private System.Windows.Forms.CheckBox checkbox_6;
         private System.Windows.Forms.Timer day_countdown_timer;
         private System.Windows.Forms.Label day_countdown_timer_label;
         private System.Windows.Forms.ProgressBar countdown_progress_bar;

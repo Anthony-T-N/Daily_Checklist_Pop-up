@@ -1,4 +1,4 @@
-using Daily_Checklist_Pop_up.Properties;
+﻿using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,7 +59,7 @@ namespace Daily_Checklist_Pop_up
 
             check_boxes = new List<CheckBox>()
             {
-                checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6
+                checkbox_1, checkbox_2, checkbox_3, checkbox_4, checkbox_5, checkbox_6
             };
 
             if (persistence_option_switch == true)
@@ -72,7 +72,7 @@ namespace Daily_Checklist_Pop_up
                     check_boxes[i].Text = lines[i];
                 }
             }
-            Debug.WriteLine(checkBox1.Text);
+            Debug.WriteLine(checkbox_1.Text);
             System.Threading.Thread.Sleep(100);
 
             change_checkboxes_text_list = new List<TextBox>()
@@ -517,12 +517,10 @@ namespace Daily_Checklist_Pop_up
                     Debug.WriteLine(" ");
                     using (StreamWriter sw = File.AppendText(path))
                     {
-                        sw.WriteLine("Cleaning");
-                        sw.WriteLine("Digital Cleaning");
-                        sw.WriteLine("Exercise");
-                        sw.WriteLine("Github");
-                        sw.WriteLine("Programming");
-                        sw.WriteLine("Example");
+                        for (int i = 0; i <= default_checkbox_options.Count - 1; i++)
+                        {
+                            sw.WriteLine(default_checkbox_options[i]);
+                        }
                         sw.Close();
                     }
                 }
