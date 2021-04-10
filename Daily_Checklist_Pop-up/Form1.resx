@@ -260,6 +260,9 @@
   <data name="fast_forward_test_button.Text" xml:space="preserve">
     <value>F</value>
   </data>
+  <data name="fast_forward_test_button.ToolTip" xml:space="preserve">
+    <value>Fast forward timer by: 01:01:01</value>
+  </data>
   <data name="&gt;&gt;fast_forward_test_button.Name" xml:space="preserve">
     <value>fast_forward_test_button</value>
   </data>
@@ -304,6 +307,9 @@
   </data>
   <data name="hide_button.Text" xml:space="preserve">
     <value>S</value>
+  </data>
+  <data name="hide_button.ToolTip" xml:space="preserve">
+    <value>Set Timer To 1:30:25</value>
   </data>
   <data name="&gt;&gt;hide_button.Name" xml:space="preserve">
     <value>hide_button</value>

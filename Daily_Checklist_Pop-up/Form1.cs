@@ -481,7 +481,7 @@ namespace Daily_Checklist_Pop_up
         }
         private void Hide_Test_Button_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine("Set Time To 1:30:25");
+            Debug.WriteLine("Set Timer To 1:30:25");
             _ticks = new TimeSpan(0, 1, 30, 25);
             countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
         }

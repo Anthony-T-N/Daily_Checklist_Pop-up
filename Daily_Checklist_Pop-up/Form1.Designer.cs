@@ -113,6 +113,7 @@ namespace Daily_Checklist_Pop_up
             this.fast_forward_test_button.BackColor = System.Drawing.SystemColors.HotTrack;
             resources.ApplyResources(this.fast_forward_test_button, "fast_forward_test_button");
             this.fast_forward_test_button.Name = "fast_forward_test_button";
+            this.MyToolTip.SetToolTip(this.fast_forward_test_button, resources.GetString("fast_forward_test_button.ToolTip"));
             this.fast_forward_test_button.UseVisualStyleBackColor = false;
             // 
             // countdown_progress_bar
@@ -127,6 +128,7 @@ namespace Daily_Checklist_Pop_up
             this.hide_button.BackColor = System.Drawing.Color.Red;
             resources.ApplyResources(this.hide_button, "hide_button");
             this.hide_button.Name = "hide_button";
+            this.MyToolTip.SetToolTip(this.hide_button, resources.GetString("hide_button.ToolTip"));
             this.hide_button.UseVisualStyleBackColor = false;
             // 
             // debug_button
