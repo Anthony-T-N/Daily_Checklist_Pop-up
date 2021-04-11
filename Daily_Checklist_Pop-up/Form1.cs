@@ -1,4 +1,4 @@
-﻿using Daily_Checklist_Pop_up.Properties;
+using Daily_Checklist_Pop_up.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +42,8 @@ namespace Daily_Checklist_Pop_up
             _ticks = Countdown_Calculations();
             InitializeComponent();
             BringToFront();
+
+            Persistent_Checkboxes_State();
 
             #region [System tray startup]
             mynotifyicon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info; //Shows the info icon so the user doesn't think there is an error.
@@ -194,6 +196,7 @@ namespace Daily_Checklist_Pop_up
             }
             if (_ticks <= TimeSpan.Zero)
             {
+                // Once timer reaches 0. All checkboxs are unchecked.
                 _ticks = Countdown_Calculations();
                 day_countdown_timer_label.Text = "RESET_TIMER";
                 countdown_progress_bar.Value = countdown_progress_bar.Maximum - (int)_ticks.TotalSeconds;
@@ -523,6 +526,34 @@ namespace Daily_Checklist_Pop_up
                         }
                         sw.Close();
                     }
+                }
+            }
+        }
+        // NOTE TO SELF: Method requires testing.
+        private void Persistent_Checkboxes_State()
+        {
+            // Method used to maintain a persistent record of the checkbox's states between application exits/closes.
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_states].txt");
+
+            if (System.IO.File.Exists(path))
+            {
+                string[] lines = System.IO.File.ReadAllLines(path);
+                for (int i = lines.Length; i > 0; i--)
+                {
+                    string last_lines = lines[lines.Length - i];
+                    Debug.WriteLine(last_lines);
+                }
+            }
+            else if (!System.IO.File.Exists(path))
+            {
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    for (int i = 0; i <= check_boxes.Count - 1; i++)
+                    {
+                        Debug.WriteLine(check_boxes[i].Checked);
+                        sw.WriteLine(Convert.ToString(check_boxes[i].Checked));
+                    }
+                    sw.Close();
                 }
             }
         }
