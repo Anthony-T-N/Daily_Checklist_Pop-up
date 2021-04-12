@@ -43,8 +43,6 @@ namespace Daily_Checklist_Pop_up
             InitializeComponent();
             BringToFront();
 
-            Persistent_Checkboxes_State();
-
             #region [System tray startup]
             mynotifyicon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info; //Shows the info icon so the user doesn't think there is an error.
             mynotifyicon.BalloonTipTitle = "[Daily_Checklist_Pop-up]";
@@ -63,6 +61,8 @@ namespace Daily_Checklist_Pop_up
             {
                 checkbox_1, checkbox_2, checkbox_3, checkbox_4, checkbox_5, checkbox_6
             };
+
+            Persistent_Checkboxes_State();
 
             if (persistence_option_switch == true)
             {
@@ -532,6 +532,7 @@ namespace Daily_Checklist_Pop_up
         // NOTE TO SELF: Method requires testing.
         private void Persistent_Checkboxes_State()
         {
+            Debug.WriteLine("Persistent_Checkboxes_State");
             // Method used to maintain a persistent record of the checkbox's states between application exits/closes.
             string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_states].txt");
 
@@ -543,14 +544,24 @@ namespace Daily_Checklist_Pop_up
                     string last_lines = lines[lines.Length - i];
                     Debug.WriteLine(last_lines);
                 }
-            }
-            else if (!System.IO.File.Exists(path))
-            {
                 using (StreamWriter sw = File.AppendText(path))
                 {
                     for (int i = 0; i <= check_boxes.Count - 1; i++)
                     {
-                        Debug.WriteLine(check_boxes[i].Checked);
+                        Debug.WriteLine(Convert.ToString(check_boxes[i].Checked));
+                        sw.WriteLine(Convert.ToString(check_boxes[i].Checked));
+                    }
+                    sw.Close();
+                }
+            }
+            else if (!System.IO.File.Exists(path))
+            {
+                Debug.WriteLine("Creating [current_checkbox_states].txt");
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    for (int i = 0; i <= check_boxes.Count - 1; i++)
+                    {
+                        Debug.WriteLine(Convert.ToString(check_boxes[i].Checked));
                         sw.WriteLine(Convert.ToString(check_boxes[i].Checked));
                     }
                     sw.Close();
