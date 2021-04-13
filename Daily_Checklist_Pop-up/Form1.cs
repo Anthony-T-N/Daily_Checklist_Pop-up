@@ -177,6 +177,7 @@ namespace Daily_Checklist_Pop_up
             //Position_check();
             Hourly_Notification();
             Debug_Info();
+            Persistent_Checkboxes_State();
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -538,17 +539,15 @@ namespace Daily_Checklist_Pop_up
 
             if (System.IO.File.Exists(path))
             {
-                string[] lines = System.IO.File.ReadAllLines(path);
-                for (int i = lines.Length; i > 0; i--)
+                // Remove all contents of [current_checkbox_states].txt.
+                using (StreamWriter sw = new StreamWriter(path, false))
                 {
-                    string last_lines = lines[lines.Length - i];
-                    Debug.WriteLine(last_lines);
+                    sw.Close();
                 }
                 using (StreamWriter sw = File.AppendText(path))
                 {
                     for (int i = 0; i <= check_boxes.Count - 1; i++)
                     {
-                        Debug.WriteLine(Convert.ToString(check_boxes[i].Checked));
                         sw.WriteLine(Convert.ToString(check_boxes[i].Checked));
                     }
                     sw.Close();
