@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -62,7 +63,8 @@ namespace Daily_Checklist_Pop_up
                 checkbox_1, checkbox_2, checkbox_3, checkbox_4, checkbox_5, checkbox_6
             };
 
-            Persistent_Checkboxes_State();
+            // Running method first time.
+            Persistent_Checkboxes_State(true);
 
             if (persistence_option_switch == true)
             {
@@ -177,7 +179,7 @@ namespace Daily_Checklist_Pop_up
             //Position_check();
             Hourly_Notification();
             Debug_Info();
-            Persistent_Checkboxes_State();
+            Persistent_Checkboxes_State(false);
             if (countdown_progress_bar.Maximum >= countdown_progress_bar.Value)
             {
                 countdown_progress_bar.Value++;
@@ -531,13 +533,25 @@ namespace Daily_Checklist_Pop_up
             }
         }
         // NOTE TO SELF: Method requires testing.
-        private void Persistent_Checkboxes_State()
+        // Transfer bool values from text file to GUI/Form.
+        private void Persistent_Checkboxes_State(bool startup)
         {
             Debug.WriteLine("Persistent_Checkboxes_State");
             // Method used to maintain a persistent record of the checkbox's states between application exits/closes.
             string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_states].txt");
 
-            if (System.IO.File.Exists(path))
+            if (System.IO.File.Exists(path) && startup == true)
+            {
+                string[] lines = System.IO.File.ReadAllLines(path);
+                for (int i = 0; i <= check_boxes.Count - 1; i++)
+                {
+                    Debug.WriteLine(Convert.ToBoolean(lines[i]));
+                    Thread.Sleep(100);
+                    check_boxes[i].Checked = Convert.ToBoolean(lines[i]);
+                }
+            }
+
+            else if (System.IO.File.Exists(path))
             {
                 // Remove all contents of [current_checkbox_states].txt.
                 using (StreamWriter sw = new StreamWriter(path, false))
