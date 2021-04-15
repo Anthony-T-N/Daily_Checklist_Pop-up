@@ -173,7 +173,10 @@ namespace Daily_Checklist_Pop_up
             this.TopMost = false;
             */
             _ticks = _ticks.Subtract(_oneSecond);
-            Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
+            if (debug_mode == true)
+            {
+                Debug.WriteLine(string.Format("{0:hh\\:mm\\:ss}", _ticks));
+            }
             // Debug.WriteLine(this.Location);
             day_countdown_timer_label.Text = string.Format("{0:hh\\:mm\\:ss}", _ticks);
             //Position_check();
@@ -388,8 +391,11 @@ namespace Daily_Checklist_Pop_up
                     _ticks = Countdown_Calculations();
                     reset_offical_timer = false;
                 }
-                Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
-                Debug.WriteLine(DateTime.Now.ToString("mm"));
+                if (debug_mode == true)
+                {
+                    Debug.WriteLine(DateTime.Now.ToString("h:mm:ss tt"));
+                    Debug.WriteLine("Minutes" + DateTime.Now.ToString("mm"));
+                }
                 bool hourly_notification_switch = false;
                 for (int i = 0; i <= check_boxes.Count - 1; i++)
                 {
@@ -534,13 +540,14 @@ namespace Daily_Checklist_Pop_up
         }
         // NOTE TO SELF: Method requires testing.
         // Transfer bool values from text file to GUI/Form.
-        private void Persistent_Checkboxes_State(bool startup)
+        private void Persistent_Checkboxes_State(bool form_startup)
         {
             Debug.WriteLine("Persistent_Checkboxes_State");
             // Method used to maintain a persistent record of the checkbox's states between application exits/closes.
             string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_states].txt");
 
-            if (System.IO.File.Exists(path) && startup == true)
+            // If statement will only execute on start up.
+            if (System.IO.File.Exists(path) && form_startup == true)
             {
                 string[] lines = System.IO.File.ReadAllLines(path);
                 for (int i = 0; i <= check_boxes.Count - 1; i++)
@@ -550,7 +557,6 @@ namespace Daily_Checklist_Pop_up
                     check_boxes[i].Checked = Convert.ToBoolean(lines[i]);
                 }
             }
-
             else if (System.IO.File.Exists(path))
             {
                 // Remove all contents of [current_checkbox_states].txt.
