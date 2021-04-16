@@ -538,22 +538,19 @@ namespace Daily_Checklist_Pop_up
                 }
             }
         }
-        // NOTE TO SELF: Method requires testing.
-        // Transfer bool values from text file to GUI/Form.
         private void Persistent_Checkboxes_State(bool form_startup)
         {
-            Debug.WriteLine("Persistent_Checkboxes_State");
             // Method used to maintain a persistent record of the checkbox's states between application exits/closes.
+            Debug.WriteLine("Persistent_Checkboxes_State");
             string path = Path.Combine(Directory.GetCurrentDirectory(), "[current_checkbox_states].txt");
 
-            // If statement will only execute on start up.
+            // This statement will only execute on start up and will transfer bool values from text file to GUI/form.
             if (System.IO.File.Exists(path) && form_startup == true)
             {
                 string[] lines = System.IO.File.ReadAllLines(path);
                 for (int i = 0; i <= check_boxes.Count - 1; i++)
                 {
                     Debug.WriteLine(Convert.ToBoolean(lines[i]));
-                    Thread.Sleep(100);
                     check_boxes[i].Checked = Convert.ToBoolean(lines[i]);
                 }
             }
@@ -575,7 +572,10 @@ namespace Daily_Checklist_Pop_up
             }
             else if (!System.IO.File.Exists(path))
             {
-                Debug.WriteLine("Creating [current_checkbox_states].txt");
+                Debug.WriteLine(" ");
+                Debug.WriteLine("[*] Text file does not exist.");
+                Debug.WriteLine("[*] Creating [current_checkbox_states].txt");
+                Debug.WriteLine(" ");
                 using (StreamWriter sw = File.AppendText(path))
                 {
                     for (int i = 0; i <= check_boxes.Count - 1; i++)
